@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Bakerz Bite bakery and cafe eProject">
+    <title>Menu | Bakerz Bite</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!--
+        NOTE: Pehle yahan style.css aur assets/style.css dono link thin.
+        Wo cards ko hide kar sakti thin, is liye is page ki zaroori styling neeche inline hai.
+        Agar aap apni CSS wapas lagana chahein to sirf EK file link karein
+        aur .bb-card wali styling ko override na karein.
+    -->
+
+    <style>
+        :root {
+            --bakery-brown: #603813;
+            --bakery-dark: #3e2514;
+            --bakery-cream: #fff8ee;
+            --bakery-gold: #d9a15b;
+            --bakery-pink: #f8e5d9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bakery-cream);
+            color: var(--bakery-dark);
+            padding-bottom: 50px;
+        }
+
+        h1, h2, h3, h4, h5, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .kicker {
+            display: inline-block;
+            font-size: .75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bakery-gold);
+            font-weight: 600;
+        }
+
+        h1 em, h2 em { color: var(--bakery-gold); }
+
+        /* progress bar */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--bakery-gold);
+            z-index: 2000;
+        }
+
+        /* navbar */
+        .navbar {
+            background: #fff9f2ee;
+            box-shadow: 0 2px 15px #0001;
+            padding: 12px 0;
+        }
+
+        .navbar-brand {
+            color: #5a3424;
+            text-decoration: none;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .navbar-brand span {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .navbar-brand i { font-family: serif; }
+        .navbar-brand small { font-size: 8px; letter-spacing: 2px; }
+        .nav-link { font-weight: 600; }
+        .nav-link.active { color: var(--bakery-gold) !important; }
+
+        .cart-badge {
+            font-size: 0.75rem;
+            padding: 0.25em 0.5em;
+        }
+
+        /* filters */
+        .filter.active {
+            background: var(--bakery-brown);
+            color: #fff;
+            border-color: var(--bakery-brown);
+        }
+
+        /* PRODUCT CARDS (always visible, no hover/scroll dependency) */
+        .bb-card {
+            position: relative;
+            height: 380px;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bakery-pink);
+            box-shadow: 0 8px 22px rgba(62, 37, 20, .15);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .bb-card:hover,
+        .bb-card:focus-visible {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(62, 37, 20, .25);
+            outline: none;
+        }
+
+        .bb-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bb-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 60px 18px 16px;
+            color: #fff;
+            background: linear-gradient(to top, rgba(30, 15, 5, .92) 25%, rgba(30, 15, 5, 0));
+        }
+
+        .bb-overlay h3 {
+            font-size: 1.25rem;
+            margin: 4px 0;
+            text-transform: capitalize;
+        }
+
+        .bb-overlay p {
+            font-size: .82rem;
+            margin-bottom: 8px;
+            opacity: .9;
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .bb-overlay .kicker { font-size: .65rem; }
+        .bb-price { font-size: 1.05rem; color: var(--bakery-gold); }
+
+        .modal-product-image { max-height: 360px; width: 100%; object-fit: cover; }
+        #modalTitle { text-transform: capitalize; }
+
+        /* ticker */
+        .ticker {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: var(--bakery-dark);
+            color: #fff;
+            font-size: .8rem;
+            padding: 6px 14px;
+            z-index: 1000;
+        }
+
+        .ticker b { color: #ff5a5a; margin-right: 10px; }
+    </style>
+</head>
+
+<body>
+    <div id="progress"></div>
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                <b class="logo">☕</b>
+                <span>
+                    <strong>Bakerz</strong>
+                    <i>Bite</i>
+                    <small>BAKERY & CAFÉ</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="merchandise.html">Merchandise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sitemap.html">Site Map</a></li>
+
+                    <!-- Cart Trigger Button -->
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-outline-dark position-relative" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"
+                            aria-controls="cartOffcanvas">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span id="cartCount"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <header class="py-5 mt-5 text-center">
+        <div class="container">
+            <span class="kicker">BAKERZ BITE</span>
+            <h1>Our <em>Menu</em></h1>
+        </div>
+    </header>
+
+    <section id="products" class="section products mb-5">
+        <div class="container">
+            <div class="heading text-center mb-4">
+                <span class="kicker">OUR MENU</span>
+                <h2>Find your <em>perfect bite.</em></h2>
+                <p>Click any item for its description and ingredients, or add it straight to your cart.</p>
+            </div>
+
+            <div class="filters mb-4">
+                <div id="cats" class="pills d-flex flex-wrap justify-content-center gap-2 mb-3">
+                    <button class="filter active btn btn-sm btn-outline-dark" data-cat="all">All</button>
+                    <button class="filter btn btn-sm btn-outline-dark" data-cat="cakes">Cakes</button>
+                    <button class="filter btn btn-sm btn-outline-dark" data-cat="pastries">Pastries</button>
+                    <button class="filter btn btn-sm btn-outline-dark" data-cat="cookies">Cookies</button>
+                    <button class="filter btn btn-sm btn-outline-dark" data-cat="pies">Pies</button>
+                    <button class="filter btn btn-sm btn-outline-dark" data-cat="beverages">Beverages</button>
+                </div>
+
+                <div class="row g-2 mt-2 justify-content-center">
+                    <div class="col-md-4">
+                        <select id="price" class="form-select">
+                            <option value="all">Price: All</option>
+                            <option value="low">Under Rs. 1,000</option>
+                            <option value="mid">Rs. 1,000 – 2,000</option>
+                            <option value="high">Above Rs. 2,000</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input id="search" class="form-control" placeholder="Search cakes, cookies, coffee...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards yahan script.js se banenge -->
+            <div id="grid" class="row g-4 mt-2"></div>
+            <div id="none" class="empty d-none text-center py-5">No bites found. Try another filter.</div>
+        </div>
+    </section>
+
+    <!-- Cart Offcanvas Drawer -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title font-playfair" id="cartOffcanvasLabel"><i class="bi bi-cart3"></i> Your Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div id="cartItemsList" class="flex-grow-1 overflow-auto mb-3">
+                <p class="text-muted text-center mt-5">Your cart is currently empty.</p>
+            </div>
+            <div class="border-top pt-3">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="fw-bold">Total:</span>
+                    <span id="cartTotalPrice" class="fw-bold text-success">Rs. 0</span>
+                </div>
+                <button id="checkoutBtn" class="btn btn-dark w-100 py-2" disabled>Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100; margin-bottom: 30px;">
+        <div id="orderToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                    Order placed successfully! Thank you for choosing Bakerz Bite.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <b>Bakerz Bite</b>
+        <p class="mb-2">Premium baked goods, made fresh with care.</p>
+        <div class="mb-2">
+            <a href="index.html" class="text-white text-decoration-none">Home</a> ·
+            <a href="menu.html" class="text-white text-decoration-none">Menu</a> ·
+            <a href="about.html" class="text-white text-decoration-none">About</a> ·
+            <a href="contact.html" class="text-white text-decoration-none">Contact</a>
+        </div>
+        <small>© <span id="year"></span> Bakerz Bite. Academic eProject.</small>
+    </footer>
+
+    <!-- PRODUCT DETAILS POPUP MODAL -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content product-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <img id="modalImage" src="" alt="Product" class="modal-product-image img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <small id="modalCategory" class="kicker"></small>
+                            <h2 id="modalTitle"></h2>
+                            <h4 id="modalPrice" class="modal-price text-danger"></h4>
+                            <p id="modalDescription" class="mt-2"></p>
+                            <h5 class="mt-3">Ingredients</h5>
+                            <p id="modalIngredients" class="text-muted small"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modalAddBtn" class="btn btn-success"><i class="bi bi-cart-plus"></i> Add to cart</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticker"><b>● LIVE</b><span id="ticker">Bakerz Bite — Freshly baked every day</span></div>
+    <button id="top" class="btn btn-secondary rounded-circle"
+        style="position:fixed; bottom:50px; right:20px; display:none; z-index:1000;">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Sara logic (cards + cart) script.js mein hai. Inline cart script hata di gayi hai. -->
+    <script src="script.js"></script>
+</body>
+
+</html>

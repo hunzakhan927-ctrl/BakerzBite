@@ -1,0 +1,665 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sitemap | Bakerz Bite</title>
+
+    <meta name="description"
+          content="Explore the Bakerz Bite website sitemap to find our menu, offers, gallery, merchandise, FAQs, feedback, and contact information.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        :root {
+            --bakery-brown: #5c3828;
+            --bakery-dark: #38251d;
+            --bakery-rose: #c98278;
+            --bakery-cream: #fff9f3;
+            --bakery-light: #f7eee6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffdfb;
+            color: var(--bakery-dark);
+        }
+
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+     .navbar {
+    background: #fff9f2ee;
+    box-shadow: 0 2px 15px #0001;
+    padding: 12px 0
+}
+
+.navbar-brand {
+    color: #5a3424;
+    text-decoration: none;
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.navbar-brand span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1
+}
+
+.navbar-brand i {
+    font-family: serif
+}
+
+.navbar-brand small {
+    font-size: 8px;
+    letter-spacing: 2px
+}
+
+.nav-link {
+    font-weight: 600
+}
+
+        /* Hero */
+        .page-hero {
+            background: linear-gradient(135deg, #f7e8dc, #fff9f3);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--bakery-brown);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 700;
+        }
+
+        .page-hero p {
+            max-width: 680px;
+            margin: 15px auto 0;
+            color: #705b50;
+            line-height: 1.8;
+        }
+
+        /* Sitemap content */
+        .sitemap-section {
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            color: var(--bakery-brown);
+            font-weight: 700;
+        }
+
+        .section-description {
+            color: #806d62;
+            line-height: 1.8;
+        }
+
+        .sitemap-card {
+            background: #fff;
+            border: 1px solid #eadbd0;
+            border-radius: 18px;
+            padding: 30px;
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .sitemap-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(60, 35, 25, 0.09);
+        }
+
+        .sitemap-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bakery-light);
+            color: var(--bakery-rose);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+
+        .sitemap-card h2 {
+            color: var(--bakery-brown);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .sitemap-card p {
+            color: #806d62;
+            line-height: 1.7;
+            font-size: 0.93rem;
+        }
+
+        .sitemap-links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .sitemap-links li {
+            border-top: 1px solid #f0e5dd;
+            padding: 11px 0;
+        }
+
+        .sitemap-links a {
+            color: var(--bakery-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: color 0.2s;
+        }
+
+        .sitemap-links a:hover {
+            color: var(--bakery-rose);
+        }
+
+        .sitemap-links i {
+            color: var(--bakery-rose);
+        }
+
+        .site-overview {
+            background-color: var(--bakery-light);
+            border-radius: 18px;
+            padding: 35px;
+            margin-top: 50px;
+        }
+
+        .site-overview h2 {
+            color: var(--bakery-brown);
+            font-weight: 700;
+        }
+
+        .overview-link {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #eadbd0;
+            border-radius: 30px;
+            padding: 10px 18px;
+            margin: 5px;
+            color: var(--bakery-brown);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .overview-link:hover {
+            background: var(--bakery-brown);
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bakery-dark);
+            color: #f9eee5;
+            padding: 50px 0 20px;
+        }
+
+        footer h4,
+        footer h5 {
+            color: #fff;
+        }
+
+        footer a {
+            color: #f1d9ca;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #e8a99f;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-divider {
+            border-color: rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+        }
+
+        @media (max-width: 576px) {
+            .page-hero {
+                padding: 55px 15px;
+            }
+
+            .sitemap-section {
+                padding: 50px 0;
+            }
+
+            .sitemap-card {
+                padding: 24px;
+            }
+
+            .site-overview {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    
+<!-- NAVBAR: Bakerz Bite - same as index.html -->
+<nav class="navbar navbar-expand-lg fixed-top" id="nav">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <b class="logo">☕</b>
+            <span>
+                <strong>Bakerz</strong>
+                <i>Bite</i>
+                <small>BAKERY &amp; CAFÉ</small>
+            </span>
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+                aria-controls="menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="merchandise.html">Merchandise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="offers.html">Offers</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="faq.html">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sitemap.html">Site Map</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+    <!-- PAGE HERO -->
+    <header class="page-hero">
+        <div class="container">
+
+            <p class="text-uppercase fw-semibold mb-2"
+               style="letter-spacing: 3px; color: #b36e63;">
+                Find Your Way Around
+            </p>
+
+            <h1>Website Sitemap</h1>
+
+            <p>
+                Everything at Bakerz Bite, all in one place.
+                Explore our bakery menu, discover special offers,
+                browse our gallery, or get in touch with us.
+            </p>
+
+            <a href="#sitemap-content" class="btn btn-bakery mt-4">
+                Explore All Pages
+                <i class="bi bi-arrow-down ms-2"></i>
+            </a>
+
+        </div>
+    </header>
+
+    <!-- SITEMAP CONTENT -->
+    <main>
+        <section class="sitemap-section" id="sitemap-content">
+            <div class="container">
+
+                <div class="text-center mb-5">
+                    <h2 class="section-heading display-6">
+                        Explore Bakerz Bite
+                    </h2>
+
+                    <p class="section-description mt-3">
+                        Choose a section below to visit the page you need.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- MAIN PAGES -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="sitemap-card">
+                            <div class="sitemap-icon">
+                                <i class="bi bi-house-heart"></i>
+                            </div>
+
+                            <h2>Main Pages</h2>
+
+                            <p>
+                                Start exploring our bakery website and learn
+                                more about Bakerz Bite.
+                            </p>
+
+                            <ul class="sitemap-links">
+                                <li>
+                                    <a href="index.html">
+                                        Home Page
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about.html">
+                                        About Us
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">
+                                        Contact Us
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- PRODUCTS -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="sitemap-card">
+                            <div class="sitemap-icon">
+                                <i class="bi bi-cake2"></i>
+                            </div>
+
+                            <h2>Bakery & Products</h2>
+
+                            <p>
+                                Discover bakery treats, featured products,
+                                and merchandise.
+                            </p>
+
+                            <ul class="sitemap-links">
+                                <li>
+                                    <a href="menu.html">
+                                        Bakery Menu
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="merchandise.html">
+                                        Merchandise
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="offers.html">
+                                        Offers & Deals
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="gallery.html">
+                                        Photo Gallery
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CUSTOMER SUPPORT -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="sitemap-card">
+                            <div class="sitemap-icon">
+                                <i class="bi bi-chat-heart"></i>
+                            </div>
+
+                            <h2>Customer Support</h2>
+
+                            <p>
+                                Find useful information and share your
+                                experience with our bakery.
+                            </p>
+
+                            <ul class="sitemap-links">
+                                <li>
+                                    <a href="faq.html">
+                                        Frequently Asked Questions
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="feedback.html">
+                                        Customer Feedback
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">
+                                        Get in Touch
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ALL PAGES QUICK LINKS -->
+                <div class="site-overview text-center">
+                    <h2 class="mb-3">All Website Pages</h2>
+
+                    <p class="section-description mb-4">
+                        Use these quick links to move directly to any
+                        main page in the Bakerz Bite project.
+                    </p>
+
+                    <div>
+                        <a class="overview-link" href="index.html">
+                            <i class="bi bi-house me-1"></i> Home
+                        </a>
+
+                        <a class="overview-link" href="menu.html">
+                            <i class="bi bi-cake2 me-1"></i> Menu
+                        </a>
+
+                        <a class="overview-link" href="merchandise.html">
+                            <i class="bi bi-bag me-1"></i> Merchandise
+                        </a>
+
+                        <a class="overview-link" href="offers.html">
+                            <i class="bi bi-tags me-1"></i> Offers
+                        </a>
+
+                        <a class="overview-link" href="gallery.html">
+                            <i class="bi bi-images me-1"></i> Gallery
+                        </a>
+
+                        <a class="overview-link" href="about.html">
+                            <i class="bi bi-info-circle me-1"></i> About
+                        </a>
+
+                        <a class="overview-link" href="feedback.html">
+                            <i class="bi bi-star me-1"></i> Feedback
+                        </a>
+
+                        <a class="overview-link" href="faq.html">
+                            <i class="bi bi-question-circle me-1"></i> FAQs
+                        </a>
+
+                        <a class="overview-link" href="contact.html">
+                            <i class="bi bi-envelope me-1"></i> Contact
+                        </a>
+
+                        <a class="overview-link" href="sitemap.html">
+                            <i class="bi bi-diagram-3 me-1"></i> Sitemap
+                        </a>
+                    </div>
+
+                    <a href="menu.html" class="btn btn-bakery mt-4">
+                        Explore Our Menu
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="mb-3">
+                        <i class="bi bi-cake2-fill me-2"></i>Bakerz Bite
+                    </h4>
+
+                    <p>
+                        Sweet moments begin with freshly baked goodness.
+                        Explore our bakery-inspired collection of cakes,
+                        pastries, cookies, and more.
+                    </p>
+
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" aria-label="Pinterest">
+                            <i class="bi bi-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Customer Care</h5>
+
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Contact Details</h5>
+
+                    <p class="mb-2">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Karachi, Pakistan
+                    </p>
+
+                    <p class="mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        hello@bakerzbite.example
+                    </p>
+
+                    <p class="small">
+                        Replace these sample details with your actual
+                        bakery information.
+                    </p>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="d-flex flex-column flex-md-row
+                        justify-content-between gap-2">
+                <p class="mb-0 small">
+                    &copy; <span id="currentYear"></span> Bakerz Bite.
+                    All rights reserved.
+                </p>
+
+                <p class="mb-0 small">
+                    Made with love and a little sweetness.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Shared Website JavaScript -->
+    <script src="assets/app.js"></script>
+
+    <script>
+        // Automatically update the copyright year.
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+    <!-- Bootstrap 5 JavaScript bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bakerz Bite custom JavaScript -->
+<script src="./app.js"></script>
+</body>
+</html>
+
+</body>
+</html>
+```

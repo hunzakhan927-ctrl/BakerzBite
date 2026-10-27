@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bakerz Bite | Bakery &amp; Café</title>
+    <meta name="description"
+        content="Discover delicious cakes, pastries, cookies, fresh bakery treats and café merchandise at Bakerz Bite.">
+
+    <meta name="theme-color" content="#fff8ee">
+
+    <!-- Bootstrap: load once -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared project CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        :root {
+            --bakery-brown: #603813;
+            --bakery-dark: #3e2514;
+            --bakery-cream: #fff8ee;
+            --bakery-light: #fcf1e4;
+            --bakery-gold: #d9a15b;
+            --bakery-text: #806d62;
+            --bakery-border: #eadbd0;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bakery-cream);
+            color: var(--bakery-dark);
+            line-height: 1.7;
+            overflow-wrap: break-word;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            transition: color .25s ease, background .25s ease,
+                transform .25s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.25;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: rgba(255, 248, 238, .97);
+            box-shadow: 0 3px 18px rgba(62, 37, 20, .09);
+            padding: 12px 0;
+            z-index: 1030;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--bakery-brown) !important;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .brand-logo {
+            font-size: 2rem;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .brand-text strong,
+        .brand-text em {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .brand-text em {
+            font-size: 1rem;
+        }
+
+        .brand-text small {
+            font-family: 'Poppins', sans-serif;
+            font-size: .55rem;
+            letter-spacing: 1.5px;
+        }
+
+        .navbar {
+            background: #fff9f2ee;
+            box-shadow: 0 2px 15px #0001;
+            padding: 12px 0
+        }
+
+        .navbar-brand {
+            color: #5a3424;
+            text-decoration: none;
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .navbar-brand span {
+            display: flex;
+            flex-direction: column;
+            line-height: 1
+        }
+
+        .navbar-brand i {
+            font-family: serif
+        }
+
+        .navbar-brand small {
+            font-size: 8px;
+            letter-spacing: 2px
+        }
+
+        .nav-link {
+            font-weight: 600;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .btn-bakery {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: var(--bakery-brown);
+            color: var(--white);
+            border: 1px solid var(--bakery-brown);
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .btn-bakery:hover {
+            background: var(--bakery-dark);
+            border-color: var(--bakery-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-bakery {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border: 1px solid var(--bakery-brown);
+            border-radius: 50px;
+            padding: 11px 22px;
+            color: var(--bakery-brown);
+            background: transparent;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-outline-bakery:hover {
+            color: var(--white);
+            background: var(--bakery-brown);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 610px;
+            padding: 150px 0 100px;
+            color: var(--white);
+            background:
+                linear-gradient(90deg,
+                    rgba(39, 23, 14, .88),
+                    rgba(62, 37, 20, .64),
+                    rgba(62, 37, 20, .22)),
+                url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=2000&q=85") center 55% / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #f4d09b;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: .78rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.7rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #f8eee5;
+            line-height: 1.9;
+        }
+
+        .btn-outline-light {
+            border-radius: 50px !important;
+            padding: 12px 24px;
+        }
+
+        /* ================= GENERAL SECTIONS ================= */
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            color: var(--bakery-brown);
+            text-transform: uppercase;
+            font-size: .77rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            color: var(--bakery-brown);
+            font-weight: 700;
+        }
+
+        .section-description {
+            max-width: 720px;
+            color: var(--bakery-text);
+            line-height: 1.9;
+        }
+
+        .welcome-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 62px;
+            height: 62px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #f0dfcc;
+            color: var(--bakery-brown);
+            font-size: 1.5rem;
+        }
+
+        /* ================= CATEGORY CARDS ================= */
+
+        .category-card {
+            display: block;
+            position: relative;
+            height: 100%;
+            min-height: 290px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #e8d6c4;
+            text-decoration: none;
+            isolation: isolate;
+        }
+
+        .category-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform .45s ease;
+            z-index: -2;
+        }
+
+        .category-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(39, 23, 14, .91),
+                    rgba(39, 23, 14, .05) 75%);
+            z-index: -1;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: auto 0 0;
+            padding: 25px 20px;
+            color: var(--white);
+        }
+
+        .category-overlay h3 {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+        }
+
+        .category-overlay p {
+            font-size: .88rem;
+            margin: 0;
+            color: #f8eee5;
+        }
+
+        /* ================= PRODUCT CARDS ================= */
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--bakery-border);
+            border-radius: 17px;
+            box-shadow: 0 5px 20px rgba(62, 37, 20, .04);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 13px 30px rgba(62, 37, 20, .10);
+        }
+
+        /* Every product image has the same dimensions.
+           object-fit prevents stretching and keeps images proportional. */
+        .product-card>img {
+            width: 100%;
+            height: 230px;
+            flex: 0 0 230px;
+            object-fit: cover;
+            object-position: center;
+            background: #f0dfcc;
+        }
+
+        .product-info {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 21px 18px;
+        }
+
+        .product-tag {
+            display: inline-block;
+            align-self: flex-start;
+            color: var(--bakery-brown);
+            background: #f5e8d8;
+            border-radius: 50px;
+            padding: 5px 10px;
+            font-size: .68rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .product-info h3 {
+            font-size: 1.35rem;
+            color: var(--bakery-brown);
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: var(--bakery-text);
+            font-size: .87rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .product-price {
+            color: var(--bakery-brown);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .product-bottom .btn {
+            padding: 8px 13px;
+            font-size: .8rem;
+            white-space: nowrap;
+        }
+
+        /* ================= OFFER ================= */
+
+        .offer-section {
+            padding: 75px 0;
+            background:
+                linear-gradient(115deg,
+                    rgba(45, 26, 15, .97),
+                    rgba(96, 56, 19, .91)),
+                var(--bakery-dark);
+            color: var(--white);
+        }
+
+        .offer-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+        }
+
+        .offer-section p {
+            color: #f3e6d8;
+        }
+
+        .offer-code {
+            display: inline-block;
+            border: 1px dashed #f2c88f;
+            color: #f2c88f;
+            border-radius: 7px;
+            padding: 8px 15px;
+            letter-spacing: 2px;
+            font-size: .83rem;
+        }
+
+        /* ================= MERCHANDISE ================= */
+
+        .merchandise-box {
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--bakery-border);
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(62, 37, 20, .06);
+        }
+
+        .merchandise-box>.row {
+            min-height: 390px;
+        }
+
+        .merchandise-box img {
+            width: 100%;
+            height: 100%;
+            min-height: 390px;
+            max-height: 470px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .merchandise-copy {
+            padding: 45px;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 15px;
+            background: #f0dfcc;
+            transition: transform .3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ================= REVIEWS ================= */
+
+        .review-card {
+            height: 100%;
+            padding: 27px;
+            border: 1px solid var(--bakery-border);
+            border-radius: 17px;
+            background: var(--white);
+        }
+
+        .review-stars {
+            color: #b77b30;
+            margin-bottom: 17px;
+            letter-spacing: 2px;
+        }
+
+        .review-card>p {
+            color: var(--bakery-text);
+            font-size: .91rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .review-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #f0dfcc;
+            color: var(--bakery-brown);
+            font-weight: 700;
+        }
+
+        /* ================= NEWSLETTER ================= */
+
+        .newsletter {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 45px;
+            border: 1px solid var(--bakery-border);
+            border-radius: 22px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(62, 37, 20, .05);
+        }
+
+        .newsletter .form-control {
+            min-height: 49px;
+            padding: 12px 15px;
+            border: 1px solid #ddcbbb;
+            border-radius: 50px;
+            background: #fffdf9;
+        }
+
+        .newsletter .form-control:focus {
+            border-color: var(--bakery-brown);
+            box-shadow: 0 0 0 3px rgba(96, 56, 19, .12);
+        }
+
+        .newsletter-message:empty {
+            display: none;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .site-footer {
+            background: var(--bakery-dark);
+            color: #f5e9dd;
+            padding: 55px 0 20px;
+        }
+
+        .site-footer h4,
+        .site-footer h5 {
+            color: var(--white);
+        }
+
+        .site-footer p {
+            color: #e5d3c2;
+            font-size: .9rem;
+            line-height: 1.9;
+        }
+
+        .site-footer a {
+            color: #f1d9ca;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: #e8bd82;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, .25);
+            border-radius: 50%;
+            font-size: 1rem;
+        }
+
+        .footer-socials a:hover {
+            background: var(--bakery-brown);
+        }
+
+        .footer-divider {
+            border-color: rgba(255, 255, 255, .2);
+            margin: 32px 0 20px;
+        }
+
+        /* ================= BACK TO TOP ================= */
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1020;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border: 0;
+            border-radius: 50%;
+            color: var(--white);
+            background: var(--bakery-brown);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: .25s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--bakery-dark);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+
+        .navbar {
+            background: #fff9f2ee;
+            box-shadow: 0 2px 15px #0001;
+            padding: 12px 0
+        }
+
+        .navbar-brand {
+            color: #5a3424;
+            text-decoration: none;
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .navbar-brand span {
+            display: flex;
+            flex-direction: column;
+            line-height: 1
+        }
+
+        .navbar-brand i {
+            font-family: serif
+        }
+
+        .navbar-brand small {
+            font-size: 8px;
+            letter-spacing: 2px
+        }
+
+        .nav-link {
+            font-weight: 600;
+
+            .hero {
+                min-height: 550px;
+                padding: 135px 0 80px;
+                background-position: center;
+            }
+
+            .section-padding {
+                padding: 65px 0;
+            }
+
+            .merchandise-box img {
+                min-height: 320px;
+                max-height: 400px;
+            }
+
+            .merchandise-copy {
+                padding: 32px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                min-height: 520px;
+                padding: 120px 0 70px;
+                background-position: 60% center;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.45rem, 9vw, 3.6rem);
+            }
+
+            .hero p {
+                font-size: .94rem;
+            }
+
+            .section-padding {
+                padding: 55px 0;
+            }
+
+            .category-card {
+                min-height: 245px;
+            }
+
+            .product-card>img {
+                height: 220px;
+                flex-basis: 220px;
+            }
+
+            .gallery-image {
+                height: 210px;
+            }
+
+            .merchandise-box img {
+                height: 300px;
+                min-height: 0;
+                max-height: none;
+            }
+
+            .merchandise-copy {
+                padding: 30px 24px;
+            }
+
+            .newsletter {
+                padding: 32px 22px;
+            }
+
+            .offer-section {
+                padding: 55px 0;
+            }
+
+            .site-footer {
+                padding-top: 45px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .brand-logo {
+                font-size: 1.7rem;
+            }
+
+            .brand-text strong {
+                font-size: 1.08rem;
+            }
+
+            .brand-text em {
+                font-size: .92rem;
+            }
+
+            .brand-text small {
+                font-size: .48rem;
+                letter-spacing: 1.1px;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 115px 0 60px;
+            }
+
+            .hero-label {
+                letter-spacing: 2px;
+                font-size: .7rem;
+            }
+
+            .hero .d-flex {
+                align-items: stretch;
+            }
+
+            .hero .btn {
+                width: 100%;
+            }
+
+            .section-heading.display-6 {
+                font-size: 1.85rem;
+            }
+
+            .category-card {
+                min-height: 220px;
+                border-radius: 13px;
+            }
+
+            .category-overlay {
+                padding: 17px 13px;
+            }
+
+            .category-overlay h3 {
+                font-size: 1.25rem;
+            }
+
+            .category-overlay p {
+                font-size: .76rem;
+            }
+
+            .product-card>img {
+                height: 185px;
+                flex-basis: 185px;
+            }
+
+            .product-info {
+                padding: 15px 12px;
+            }
+
+            .product-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .product-info p {
+                font-size: .8rem;
+            }
+
+            .product-tag {
+                font-size: .61rem;
+            }
+
+            .product-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .product-bottom .btn {
+                width: 100%;
+            }
+
+            .gallery-image {
+                height: 165px;
+                border-radius: 11px;
+            }
+
+            .review-card {
+                padding: 23px;
+            }
+
+            .newsletter {
+                padding: 28px 17px;
+            }
+
+            .btn-bakery,
+            .btn-outline-bakery {
+                padding: 11px 17px;
+                font-size: .9rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                <b class="logo">☕</b>
+                <span>
+                    <strong>Bakerz</strong>
+                    <i>Bite</i>
+                    <small>BAKERY &amp; CAFÉ</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="merchandise.html">Merchandise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="offers.html">Offers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">Site Map</a>
+                    </li>
+                    <!-- Cart Button -->
+                  <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-outline-dark position-relative" type="button"
+                            data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Open cart">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span id="cartCount"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+
+        <header class="hero">
+            <div class="container">
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        Welcome to Bakerz Bite
+                    </span>
+
+                    <h1>
+                        Freshly Baked<br>
+                        Happiness in<br>
+                        Every Bite!
+                    </h1>
+
+                    <p>
+                        From delicious cakes and buttery pastries to freshly
+                        baked cookies, we make every moment sweeter. Discover
+                        your favorite treats and share a little happiness
+                        with the people you love.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="menu.html" class="btn btn-bakery">
+                            Explore Our Menu
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                        <a href="#about-preview" class="btn btn-outline-light">
+                            Discover Our Story
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="section-padding" id="about-preview">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-9">
+
+                        <div class="welcome-icon">
+                            <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                        </div>
+
+                        <p class="section-label">A Little About Us</p>
+
+                        <h2 class="section-heading display-6">
+                            Baked with Love, Served with a Smile
+                        </h2>
+
+                        <p class="section-description mx-auto mt-3">
+                            At Bakerz Bite, we believe the best memories are
+                            made around delicious food. Our bakery brings
+                            together delightful flavors, inviting treats and
+                            the joy of sharing. Whether you are celebrating
+                            a birthday, enjoying tea with friends or treating
+                            yourself, there is something special waiting for you.
+                        </p>
+
+                        <a href="about.html" class="btn btn-outline-bakery mt-3">
+                            Read Our Story
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= CATEGORIES ================= -->
+
+        <section class="section-padding pt-0" id="categories">
+            <div class="container">
+
+                <div class="text-center mb-5">
+                    <p class="section-label">Find Your Favorite</p>
+                    <h2 class="section-heading display-6">Explore Our Bakery</h2>
+                    <p class="section-description mx-auto mt-3">
+                        Something delicious for every craving and every occasion.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-6 col-lg-3">
+                        <a href="menu.html" class="category-card">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
+                                alt="Chocolate celebration cake" loading="lazy">
+                            <div class="category-overlay">
+                                <h3>Cakes</h3>
+                                <p>Make every celebration sweeter.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+                        <a href="menu.html" class="category-card">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80"
+                                alt="Freshly baked pastries" loading="lazy">
+                            <div class="category-overlay">
+                                <h3>Pastries</h3>
+                                <p>Flaky, golden and delicious.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+                        <a href="menu.html" class="category-card">
+                            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80"
+                                alt="Freshly baked cookies" loading="lazy">
+                            <div class="category-overlay">
+                                <h3>Cookies</h3>
+                                <p>Little bites of happiness.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+                        <a href="menu.html" class="category-card">
+                            <img src="https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=800&q=80"
+                                alt="Delicious baked pie and tart" loading="lazy">
+                            <div class="category-overlay">
+                                <h3>Pies &amp; Tarts</h3>
+                                <p>A lovely finish to any meal.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= FEATURED PRODUCTS ================= -->
+
+        <section class="section-padding" style="background: var(--bakery-light);">
+            <div class="container">
+
+                <div class="row align-items-end mb-5">
+                    <div class="col-md-8">
+                        <p class="section-label">Made for Your Cravings</p>
+                        <h2 class="section-heading display-6">Customer Favorites</h2>
+                        <p class="section-description mt-3 mb-0">
+                            Take a look at some of the treats our bakery lovers enjoy.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <a href="menu.html" class="btn btn-outline-bakery">
+                            View Full Menu
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- Product 1 -->
+                    <div class="col-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+                                alt="Chocolate celebration cake" loading="lazy">
+
+                            <div class="product-info">
+                                <span class="product-tag">Celebration Favorite</span>
+                                <h3>Chocolate Cake</h3>
+                                <p>A rich chocolate treat for birthdays and special moments.</p>
+
+                                <div class="product-bottom">
+                                    <span class="product-price">Rs. 2,500</span>
+                                    <a href="menu.html" class="btn btn-bakery btn-sm">
+                                        View Menu
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80"
+                                alt="Golden butter pastry" loading="lazy">
+
+                            <div class="product-info">
+                                <span class="product-tag">Bakery Classic</span>
+                                <h3>Butter Pastries</h3>
+                                <p>Golden, flaky pastries for a delightful tea-time treat.</p>
+
+                                <div class="product-bottom">
+                                    <span class="product-price">Rs. 250</span>
+                                    <a href="menu.html" class="btn btn-bakery btn-sm">
+                                        View Menu
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=80"
+                                alt="Chocolate chip cookies" loading="lazy">
+
+                            <div class="product-info">
+                                <span class="product-tag">Sweet Little Treat</span>
+                                <h3>Cookies</h3>
+                                <p>A delicious companion for milk, tea or coffee.</p>
+
+                                <div class="product-bottom">
+                                    <span class="product-price">Rs. 400</span>
+                                    <a href="menu.html" class="btn btn-bakery btn-sm">
+                                        View Menu
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col-6 col-lg-3">
+                        <article class="product-card">
+                            <img src="https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=700&q=80"
+                                alt="Fruit tart dessert" loading="lazy">
+
+                            <div class="product-info">
+                                <span class="product-tag">Something Special</span>
+                                <h3>Fruit Tart</h3>
+                                <p>A delightful dessert for sharing after a meal.</p>
+
+                                <div class="product-bottom">
+                                    <span class="product-price">Rs. 600</span>
+                                    <a href="menu.html" class="btn btn-bakery btn-sm">
+                                        View Menu
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+
+                <p class="small text-muted text-center mt-4 mb-0">
+                    Prices are sample prices for this educational project.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- ================= SPECIAL OFFER ================= -->
+
+        <section class="offer-section">
+            <div class="container">
+                <div class="row align-items-center g-4">
+
+                    <div class="col-lg-8">
+                        <p class="text-uppercase mb-2" style="color:#f2c88f;letter-spacing:3px;">
+                            A Little Something for You
+                        </p>
+
+                        <h2 class="mb-3">Sweeten Your Day!</h2>
+
+                        <p class="mb-4" style="max-width:600px;">
+                            Explore sample bakery deals, dessert bundles and
+                            special treats for your celebrations.
+                        </p>
+
+                        <span class="offer-code">SWEET DEALS</span>
+                    </div>
+
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="offers.html" class="btn btn-bakery">
+                            Explore Offers
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= MERCHANDISE ================= -->
+
+        <section class="section-padding">
+            <div class="container">
+
+                <div class="merchandise-box">
+                    <div class="row g-0 align-items-stretch">
+
+                        <div class="col-lg-6">
+                            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=1000&q=85"
+                                alt="Coffee cups for a cozy morning" loading="lazy">
+                        </div>
+
+                        <div class="col-lg-6 d-flex align-items-center">
+                            <div class="merchandise-copy">
+
+                                <p class="section-label">More Than a Bakery</p>
+
+                                <h2 class="section-heading display-6">
+                                    Take a Little Bakerz Bite Home
+                                </h2>
+
+                                <p class="section-description mt-3">
+                                    Love our bakery atmosphere? Explore our
+                                    merchandise collection featuring mugs,
+                                    reusable bags, drinking glasses and serving
+                                    trays inspired by the joy of baking.
+                                </p>
+
+                                <a href="merchandise.html" class="btn btn-bakery mt-3">
+                                    Shop Merchandise
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <!-- ================= CUSTOMER REVIEWS ================= -->
+
+        <section class="section-padding" style="background:var(--bakery-light);">
+            <div class="container">
+
+                <div class="text-center mb-5">
+                    <p class="section-label">Kind Words</p>
+                    <h2 class="section-heading display-6">What Our Customers Say</h2>
+                    <p class="section-description mx-auto mt-3">
+                        A little happiness is even better when it is shared.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-4">
+                        <article class="review-card">
+                            <div class="review-stars" aria-label="5 out of 5 stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+
+                            <p>
+                                "The website has such a warm design! The cake
+                                and pastry sections make it easy to explore
+                                the bakery menu."
+                            </p>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="review-avatar">A</div>
+                                <div>
+                                    <h6 class="mb-1">Ayesha</h6>
+                                    <small class="text-muted">Sample customer review</small>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="review-card">
+                            <div class="review-stars" aria-label="5 out of 5 stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+
+                            <p>
+                                "I love the variety of treats and the
+                                merchandise collection. The layout looks
+                                lovely on a phone."
+                            </p>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="review-avatar">S</div>
+                                <div>
+                                    <h6 class="mb-1">Sara</h6>
+                                    <small class="text-muted">Sample customer review</small>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="review-card">
+                            <div class="review-stars" aria-label="5 out of 5 stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+
+                            <p>
+                                "The colors and pictures give the website
+                                a cozy bakery feeling. I would love to
+                                explore the full menu and special offers."
+                            </p>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="review-avatar">H</div>
+                                <div>
+                                    <h6 class="mb-1">Hira</h6>
+                                    <small class="text-muted">Sample customer review</small>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+
+                <p class="small text-muted text-center mt-4 mb-0">
+                    These testimonials are sample content for the website assignment.
+                </p>
+
+                <div class="text-center mt-4">
+                    <a href="feedback.html" class="btn btn-outline-bakery">
+                        Share Your Feedback
+                        <i class="bi bi-chat-heart"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= NEWSLETTER ================= -->
+
+        <section class="section-padding" id="newsletter">
+            <div class="container">
+
+                <div class="newsletter text-center">
+
+                    <div class="welcome-icon">
+                        <i class="bi bi-envelope-heart" aria-hidden="true"></i>
+                    </div>
+
+                    <p class="section-label">Stay Connected</p>
+
+                    <h2 class="section-heading">
+                        Stay in Our Sweet Circle
+                    </h2>
+
+                    <p class="section-description mx-auto mt-3">
+                        Join our sample newsletter to discover bakery
+                        favorites, seasonal treats and special offers.
+                    </p>
+
+                    <form id="newsletterForm" class="row g-3 justify-content-center mt-2">
+
+                        <div class="col-12 col-md-7">
+                            <label for="newsletterEmail" class="visually-hidden">
+                                Email address
+                            </label>
+
+                            <input type="email" class="form-control" id="newsletterEmail" name="email"
+                                placeholder="Enter your email address" autocomplete="email" maxlength="254" required>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+                            <button type="submit" class="btn btn-bakery w-100">
+                                Subscribe
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <div id="newsletterMessage" class="newsletter-message small mt-3" role="status" aria-live="polite">
+                    </div>
+
+                    <p class="small text-muted mt-3 mb-0">
+                        Demo only: your email is not sent or saved.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="mb-3">
+                        <i class="bi bi-cake2-fill me-2"></i>Bakerz Bite
+                    </h4>
+
+                    <p>
+                        Sweet moments begin with freshly baked goodness.
+                        Explore our bakery-inspired collection of cakes,
+                        pastries, cookies and more.
+                    </p>
+
+                    <div class="footer-socials d-flex gap-2">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Pinterest">
+                            <i class="bi bi-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="merchandise.html">Merchandise</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Customer Care</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="sitemap.html">Site Map</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Contact Details</h5>
+
+                    <p class="mb-2">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Karachi, Pakistan
+                    </p>
+
+                    <p class="mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        <a href="mailto:hello@bakerzbite.example">
+                            hello@bakerzbite.example
+                        </a>
+                    </p>
+
+                    <p class="small">
+                        Replace these sample details with your real business information.
+                    </p>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="d-flex flex-column flex-md-row
+                        justify-content-between gap-2">
+
+                <p class="mb-0 small">
+                    &copy; <span id="currentYear"></span> Bakerz Bite.
+                    All rights reserved.
+                </p>
+
+                <p class="mb-0 small">
+                    Made with love and a little sweetness.
+                </p>
+
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- Back-to-top button -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+
+    <!-- Bootstrap JavaScript: load once -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Homepage JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Automatic copyright year
+            const yearElement = document.getElementById("currentYear");
+
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Newsletter demonstration
+            const newsletterForm = document.getElementById("newsletterForm");
+            const newsletterEmail = document.getElementById("newsletterEmail");
+            const newsletterMessage = document.getElementById("newsletterMessage");
+
+            if (newsletterForm && newsletterEmail && newsletterMessage) {
+                newsletterForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    if (!newsletterForm.checkValidity()) {
+                        newsletterForm.reportValidity();
+                        return;
+                    }
+
+                    const email = newsletterEmail.value.trim();
+
+                    if (!email || !newsletterEmail.validity.valid) {
+                        newsletterMessage.textContent =
+                            "Please enter a valid email address.";
+                        newsletterMessage.style.color = "#8b2e20";
+                        return;
+                    }
+
+                    newsletterMessage.textContent =
+                        "Thank you for your interest! This is a demo subscription. Your email has not been sent or saved.";
+
+                    newsletterMessage.style.color = "#603813";
+
+                    newsletterForm.reset();
+                });
+            }
+
+            // Back-to-top button
+            const backToTop = document.getElementById("backToTop");
+
+            if (backToTop) {
+                const updateBackToTop = function () {
+                    backToTop.classList.toggle(
+                        "visible",
+                        window.scrollY > 400
+                    );
+                };
+
+                window.addEventListener("scroll", updateBackToTop, {
+                    passive: true
+                });
+
+                updateBackToTop();
+
+                backToTop.addEventListener("click", function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: window.matchMedia(
+                            "(prefers-reduced-motion: reduce)"
+                        ).matches ? "auto" : "smooth"
+                    });
+                });
+            }
+
+            // Close the mobile navigation after selecting a page link
+            const menu = document.getElementById("menu");
+
+            if (menu && window.bootstrap) {
+                menu.querySelectorAll(".nav-link").forEach(function (link) {
+                    link.addEventListener("click", function () {
+                        if (
+                            window.innerWidth < 992 &&
+                            menu.classList.contains("show")
+                        ) {
+                            bootstrap.Collapse.getOrCreateInstance(menu).hide();
+                        }
+                    });
+                });
+            }
+
+        });
+    </script>
+<script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Merchandise | Bakerz Bite</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- NOTE: assets/style.css aur assets/app.js yahan se hata di hain (conflict ka khatra tha).
+         Is page ki saari zaroori styling aur JS isi file mein hai. -->
+
+    <style>
+        :root {
+            --bakery-brown: #603813;
+            --bakery-dark: #3e2514;
+            --bakery-cream: #fff8ee;
+            --bakery-gold: #d9a15b;
+            --bakery-pink: #f8e5d9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bakery-cream);
+            color: var(--bakery-dark);
+            padding-top: 72px;
+            /* fixed navbar ke neeche content na chhupe */
+        }
+
+        h1, h2, h3, h4, .brand-name {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: #fff9f2ee;
+            box-shadow: 0 2px 15px #0001;
+            padding: 12px 0
+        }
+
+        .navbar-brand {
+            color: #5a3424;
+            text-decoration: none;
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .navbar-brand span {
+            display: flex;
+            flex-direction: column;
+            line-height: 1
+        }
+
+        .navbar-brand i { font-family: serif }
+        .navbar-brand small { font-size: 8px; letter-spacing: 2px }
+        .nav-link { font-weight: 600 }
+        .nav-link.active { color: var(--bakery-gold) !important; }
+
+        .cart-badge {
+            font-size: 0.7rem;
+            padding: 0.25em 0.5em;
+        }
+
+        .hero {
+            background:
+                linear-gradient(rgba(47, 27, 15, 0.70), rgba(47, 27, 15, 0.70)),
+                url("https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+            min-height: 370px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 15px auto 25px;
+            line-height: 1.8;
+        }
+
+        .btn-bakery {
+            background-color: var(--bakery-brown);
+            color: white;
+            border: 1px solid var(--bakery-brown);
+            border-radius: 30px;
+            padding: 11px 24px;
+            transition: 0.25s;
+        }
+
+        .btn-bakery.btn-sm { padding: 6px 14px; }
+
+        .btn-bakery:hover {
+            background-color: var(--bakery-gold);
+            border-color: var(--bakery-gold);
+            color: white;
+        }
+
+        .section-title { color: var(--bakery-brown); font-weight: 700; }
+        .section-subtitle { color: #806b59; }
+
+        .filter-panel {
+            background: #ffffff;
+            border: 1px solid #f0e4d6;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 18px rgba(60, 35, 15, 0.04);
+        }
+
+        .form-control, .form-select {
+            border-radius: 9px;
+            padding: 11px 13px;
+            border-color: #e7d7c5;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--bakery-gold);
+            box-shadow: 0 0 0 0.2rem rgba(217, 161, 91, 0.18);
+        }
+
+        .category-btn {
+            border: 1px solid #e7d7c5;
+            background: white;
+            color: var(--bakery-brown);
+            border-radius: 25px;
+            padding: 9px 18px;
+            margin: 4px;
+            transition: 0.2s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--bakery-brown);
+            color: white;
+            border-color: var(--bakery-brown);
+        }
+
+        .product-card {
+            height: 100%;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #f1e4d5;
+            border-radius: 15px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(60, 35, 15, 0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 235px;
+            object-fit: cover;
+            background: #f5eadc;
+            display: block;
+        }
+
+        .product-info { padding: 20px; }
+
+        .product-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a16a32;
+            font-weight: 600;
+        }
+
+        .product-title { font-size: 1.35rem; margin: 8px 0; color: var(--bakery-brown); }
+        .product-description { font-size: 0.88rem; color: #786b60; min-height: 44px; }
+        .product-price { color: var(--bakery-brown); font-size: 1.2rem; font-weight: 600; }
+
+        .badge-stock {
+            display: inline-block;
+            background: #e6f4e8;
+            color: #276738;
+            font-size: 0.75rem;
+            padding: 5px 9px;
+            border-radius: 20px;
+        }
+
+        .feature-box {
+            background: white;
+            border-radius: 14px;
+            padding: 25px 15px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #f1e4d5;
+        }
+
+        .feature-box i { color: #bd7c35; font-size: 2rem; }
+        .feature-box h5 { margin-top: 12px; color: var(--bakery-brown); }
+
+        .promo-banner {
+            background: var(--bakery-pink);
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        footer { background: var(--bakery-dark); color: #f8eee2; }
+        footer a { color: #f8eee2; text-decoration: none; }
+        footer a:hover { color: var(--bakery-gold); }
+        .footer-heading { color: #f0c68f; }
+
+        .social-link {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 7px;
+        }
+
+        .empty-message { display: none; text-align: center; padding: 45px 15px; }
+        .empty-message i { font-size: 3rem; color: #bd7c35; }
+
+        @media (max-width: 576px) {
+            .product-image { height: 210px; }
+            .promo-banner { padding: 25px 18px; }
+            .hero { min-height: 330px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="nav">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                <b class="logo">☕</b>
+                <span>
+                    <strong>Bakerz</strong>
+                    <i>Bite</i>
+                    <small>BAKERY &amp; CAFÉ</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="merchandise.html">Merchandise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sitemap.html">Site Map</a></li>
+
+                    <!-- CART BUTTON (navbar mein) -->
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-outline-dark position-relative" type="button"
+                            data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Open cart">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span id="cartCount"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+    <header class="hero">
+        <div class="container">
+            <p class="text-uppercase mb-2" style="letter-spacing: 3px; font-size: 0.85rem;">
+                Made for bakery lovers
+            </p>
+
+            <h1>Bring Bakerz Bite Home</h1>
+
+            <p>
+                Discover our charming collection of branded mugs, reusable bags,
+                drinking glasses and serving trays. A little piece of bakery
+                happiness for your everyday moments.
+            </p>
+
+            <a href="#shop" class="btn btn-bakery">
+                Explore Merchandise
+                <i class="bi bi-arrow-down ms-1"></i>
+            </a>
+        </div>
+    </header>
+
+
+    <!-- ================= INTRODUCTION ================= -->
+    <section class="py-5">
+        <div class="container text-center">
+            <p class="text-uppercase mb-2" style="color: #bd7c35; letter-spacing: 2px;">
+                The Bakerz Bite Collection
+            </p>
+            <h2 class="section-title display-6">Sweet Treats, Lovely Keepsakes</h2>
+            <p class="section-subtitle mx-auto mt-3" style="max-width: 720px;">
+                Our merchandise collection is inspired by the warmth of fresh
+                baking and the joy of sharing. Find something special for your
+                kitchen, your coffee breaks or a thoughtful gift.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ================= SHOP FEATURES ================= -->
+    <section class="pb-5">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-6 col-lg-3">
+                    <div class="feature-box">
+                        <i class="bi bi-gift"></i>
+                        <h5>Lovely Gifts</h5>
+                        <p class="small mb-0">Thoughtful gifts for bakery fans.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="feature-box">
+                        <i class="bi bi-cup-hot"></i>
+                        <h5>Daily Essentials</h5>
+                        <p class="small mb-0">Add a little joy to daily routines.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="feature-box">
+                        <i class="bi bi-palette"></i>
+                        <h5>Charming Designs</h5>
+                        <p class="small mb-0">Warm colors and bakery-inspired style.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="feature-box">
+                        <i class="bi bi-heart"></i>
+                        <h5>Made to Share</h5>
+                        <p class="small mb-0">Perfect for family and friends.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= MERCHANDISE SHOP ================= -->
+    <section class="py-5" id="shop" style="background-color: #fcf1e4;">
+        <div class="container">
+
+            <div class="text-center mb-4">
+                <h2 class="section-title display-6">Shop Our Merchandise</h2>
+                <p class="section-subtitle">Find your favorite Bakerz Bite essentials.</p>
+            </div>
+
+            <!-- Search, sorting and category filters -->
+            <div class="filter-panel mb-4">
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-6">
+                        <label for="searchInput" class="form-label fw-semibold">Search products</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                            <input type="search" class="form-control" id="searchInput"
+                                placeholder="Search mugs, bags, glasses..." aria-label="Search merchandise">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="sortSelect" class="form-label fw-semibold">Sort products</label>
+                        <select class="form-select" id="sortSelect">
+                            <option value="default">Featured products</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name: A to Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="fw-semibold mb-2">Browse by category</p>
+
+                    <div id="categoryFilters">
+                        <button class="category-btn active" type="button" data-category="all">All Products</button>
+                        <button class="category-btn" type="button" data-category="mugs"><i class="bi bi-cup-hot"></i> Mugs</button>
+                        <button class="category-btn" type="button" data-category="bags"><i class="bi bi-bag"></i> Bags</button>
+                        <button class="category-btn" type="button" data-category="glasses"><i class="bi bi-cup"></i> Glasses</button>
+                        <button class="category-btn" type="button" data-category="trays"><i class="bi bi-grid"></i> Trays</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Product cards
+                 IMPORTANT: data-price ab sirf NUMBER hai (2000), "2000 rs" nahi.
+                 Isi se cart aur sorting dono sahi chalte hain. -->
+            <div class="row g-4" id="productGrid">
+
+                <!-- Product 1 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="mugs"
+                    data-name="Classic Bakery Mug" data-price="2000">
+                    <article class="product-card">
+                        <img src="./images/bakerz_bite_mug_small.png" class="product-image"
+                            alt="Classic ceramic coffee mug" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Mugs</span>
+                            <h3 class="product-title">Classic Bakery Mug</h3>
+                            <p class="product-description">A charming mug for your morning coffee or tea.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 2,000</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Classic Bakery Mug" data-price="2000">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Classic Bakery Mug" data-price="2000" data-category="Mugs"
+                                data-description="A charming ceramic mug for coffee, tea and cozy bakery moments.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="mugs"
+                    data-name="Tumbler" data-price="5000">
+                    <article class="product-card">
+                        <img src="./images/Bakerz Bite Café Tumblers.png" class="product-image"
+                            alt="Stylish tumbler for hot drinks" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Mugs</span>
+                            <h3 class="product-title">Tumbler</h3>
+                            <p class="product-description">A lovely tumbler inspired by warm bakery mornings.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 5,000</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Tumbler" data-price="5000">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Tumbler" data-price="5000" data-category="Mugs"
+                                data-description="A stylish tumbler for hot drinks, cozy mornings and thoughtful gifts.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="bags"
+                    data-name="Bakery Tote Bag" data-price="1000">
+                    <article class="product-card">
+                        <img src="./images/05_canvas_tote_bag.png" class="product-image"
+                            alt="Reusable everyday tote bag" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Bags</span>
+                            <h3 class="product-title">Bakery Tote Bag</h3>
+                            <p class="product-description">A practical reusable bag for your everyday outings.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 1,000</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Bakery Tote Bag" data-price="1000">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Bakery Tote Bag" data-price="1000" data-category="Bags"
+                                data-description="A reusable everyday tote bag for carrying shopping, books and bakery treats.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="bags"
+                    data-name="Sweet Treats Gift Bag" data-price="2500">
+                    <article class="product-card">
+                        <img src="./images/images/Bakerz Bite_ Sweet Moments Together.png" class="product-image"
+                            alt="Gift bag and gift packaging" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Bags</span>
+                            <h3 class="product-title">Sweet Treats Gift Bag</h3>
+                            <p class="product-description">A cute gift bag for birthdays and special occasions.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 2,500</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Sweet Treats Gift Bag" data-price="2500">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Sweet Treats Gift Bag" data-price="2500" data-category="Bags"
+                                data-description="A decorative gift bag suitable for celebrations and thoughtful presents.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="glasses"
+                    data-name="Everyday Drinking Glass" data-price="1500">
+                    <article class="product-card">
+                        <img src="./images/Drinking Glass.jfif" class="product-image"
+                            alt="Glass for serving cold drinks" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Glasses</span>
+                            <h3 class="product-title">Everyday Drinking Glass</h3>
+                            <p class="product-description">A simple glass for juices, water and cold drinks.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 1,500</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Everyday Drinking Glass" data-price="1500">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Everyday Drinking Glass" data-price="1500" data-category="Glasses"
+                                data-description="A versatile drinking glass for serving water, juice and refreshing cold beverages.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="glasses"
+                    data-name="Dessert Glass Set" data-price="4000">
+                    <article class="product-card">
+                        <img src="./images/images/dessert glass.jpg" class="product-image"
+                            alt="Glassware for serving desserts and drinks" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Glasses</span>
+                            <h3 class="product-title">Dessert Glass Set</h3>
+                            <p class="product-description">Glassware for serving desserts and special drinks.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 4,000</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Dessert Glass Set" data-price="4000">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Dessert Glass Set" data-price="4000" data-category="Glasses"
+                                data-description="A glassware set for presenting desserts and serving drinks at gatherings.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="trays"
+                    data-name="Classic Serving Tray" data-price="950">
+                    <article class="product-card">
+                        <img src="./images/06_wooden_serving_tray.png" class="product-image"
+                            alt="Food arranged on a serving tray" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Trays</span>
+                            <h3 class="product-title">Classic Serving Tray</h3>
+                            <p class="product-description">A useful tray for serving tea, snacks and pastries.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 950</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Classic Serving Tray" data-price="950">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Classic Serving Tray" data-price="950" data-category="Trays"
+                                data-description="A serving tray for presenting snacks, tea, coffee and bakery favorites.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="col-sm-6 col-lg-4 col-xl-3 product-item" data-category="trays"
+                    data-name="Celebration Party Tray" data-price="4500">
+                    <article class="product-card">
+                        <img src="./images/images/party tray.jfif" class="product-image"
+                            alt="Food arranged for a celebration" loading="lazy">
+                        <div class="product-info">
+                            <span class="product-category">Trays</span>
+                            <h3 class="product-title">Celebration Party Tray</h3>
+                            <p class="product-description">A serving accessory for family gatherings and parties.</p>
+                            <span class="badge-stock">In stock</span>
+                            <div class="d-flex justify-content-between align-items-center mt-3 gap-2">
+                                <span class="product-price">Rs. 4,500</span>
+                                <button class="btn btn-bakery btn-sm add-to-cart" type="button"
+                                    data-name="Celebration Party Tray" data-price="4500">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                            <button class="btn btn-link p-0 mt-3 text-decoration-none product-details" type="button"
+                                data-name="Celebration Party Tray" data-price="4500" data-category="Trays"
+                                data-description="A larger serving tray for parties, family gatherings and celebrations.">
+                                View details
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+
+
+            <!-- No results message -->
+            <div class="empty-message" id="emptyMessage">
+                <i class="bi bi-search"></i>
+                <h3 class="mt-3">No products found</h3>
+                <p>Try another search term or choose a different category.</p>
+                <button class="btn btn-bakery" id="resetFilters" type="button">Show All Products</button>
+            </div>
+
+            <p class="text-center text-muted small mt-4 mb-0" id="resultCount" aria-live="polite">
+                Showing 8 products
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ================= PROMOTIONAL BANNER ================= -->
+    <section class="py-5">
+        <div class="container">
+            <div class="promo-banner">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8">
+                        <p class="text-uppercase mb-2" style="color: #a16a32; letter-spacing: 2px;">
+                            A gift full of sweetness
+                        </p>
+                        <h2 class="section-title">Make Every Moment Special</h2>
+                        <p class="mb-lg-0">
+                            Looking for a thoughtful present? Explore our bakery
+                            merchandise and find a lovely gift for someone special.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="contact.html" class="btn btn-bakery">
+                            Ask About Gifts <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= PRODUCT DETAILS MODAL ================= -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-4 section-title" id="productModalTitle">Product Details</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="product-category" id="modalCategory"></p>
+                    <h3 id="modalProductName"></h3>
+                    <p id="modalDescription" class="text-muted"></p>
+                    <p class="product-price" id="modalPrice"></p>
+                    <button type="button" class="btn btn-bakery w-100" id="modalAddToCart">
+                        <i class="bi bi-bag-plus me-1"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= CART MODAL ================= -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-4 section-title" id="cartModalTitle">
+                        <i class="bi bi-bag me-2"></i>Your Shopping Cart
+                    </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <div id="cartItems">
+                        <p class="text-muted text-center">Your cart is empty.</p>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong>Total</strong>
+                        <strong class="product-price" id="cartTotal">Rs. 0</strong>
+                    </div>
+
+                    <div id="orderMsg" class="alert alert-success mt-3 mb-0 d-none" role="alert">
+                        Order placed successfully! Thank you for choosing Bakerz Bite.
+                    </div>
+
+                    <p class="small text-muted mt-3">
+                        This is a front-end demonstration cart. Online payment
+                        and order submission are not connected.
+                    </p>
+
+                    <button type="button" id="placeOrderBtn" class="btn btn-bakery w-100 mt-2" disabled>
+                        <i class="bi bi-bag-check me-1"></i> Place Order
+                    </button>
+
+                    <a href="contact.html" class="btn btn-outline-dark w-100 mt-2">
+                        Contact Us About an Order
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="brand-name text-white">
+                        <i class="bi bi-cake2-fill brand-icon"></i> Bakerz Bite
+                    </h3>
+                    <p class="mt-3">
+                        Sweet moments, freshly baked. Discover our bakery treats
+                        and charming merchandise for everyday happiness.
+                    </p>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="menu.html">Menu</a></li>
+                        <li class="mb-2"><a href="offers.html">Offers</a></li>
+                        <li class="mb-2"><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <h5 class="footer-heading">Information</h5>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="feedback.html">Feedback</a></li>
+                        <li class="mb-2"><a href="faq.html">FAQs</a></li>
+                        <li class="mb-2"><a href="sitemap.html">Site Map</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <p class="mt-3 mb-2"><i class="bi bi-geo-alt me-2"></i>Karachi, Pakistan</p>
+                    <p class="mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        <a href="mailto:hello@bakerzbite.example">hello@bakerzbite.example</a>
+                    </p>
+                    <p class="mb-2"><i class="bi bi-clock me-2"></i>Sample hours: 9 AM – 9 PM</p>
+                    <a href="contact.html" class="btn btn-outline-light btn-sm mt-2">Get in Touch</a>
+                </div>
+
+            </div>
+
+            <hr class="border-light opacity-25 mt-4">
+
+            <div class="text-center small">
+                <p class="mb-1">&copy; <span id="currentYear"></span> Bakerz Bite. All rights reserved.</p>
+                <p class="mb-0">Website created for an educational project.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap 5 JavaScript (sirf ek baar) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ================= PAGE JAVASCRIPT ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+            // =========================
+            // SEARCH / SORT / FILTER
+            // =========================
+            const productGrid = document.getElementById("productGrid");
+            const productItems = Array.from(productGrid.querySelectorAll(".product-item"));
+
+            const searchInput = document.getElementById("searchInput");
+            const sortSelect = document.getElementById("sortSelect");
+            const categoryButtons = document.querySelectorAll(".category-btn");
+            const emptyMessage = document.getElementById("emptyMessage");
+            const resultCount = document.getElementById("resultCount");
+
+            let selectedCategory = "all";
+
+            function updateProducts() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const sortValue = sortSelect.value;
+
+                let visible = productItems.filter(function (item) {
+                    const category = item.dataset.category;
+                    const name = item.dataset.name.toLowerCase();
+                    const description = item.querySelector(".product-description").textContent.toLowerCase();
+
+                    const categoryMatches = selectedCategory === "all" || category === selectedCategory;
+                    const searchMatches =
+                        name.includes(searchTerm) ||
+                        description.includes(searchTerm) ||
+                        category.includes(searchTerm);
+
+                    return categoryMatches && searchMatches;
+                });
+
+                if (sortValue === "price-low") {
+                    visible.sort((a, b) => Number(a.dataset.price) - Number(b.dataset.price));
+                } else if (sortValue === "price-high") {
+                    visible.sort((a, b) => Number(b.dataset.price) - Number(a.dataset.price));
+                } else if (sortValue === "name") {
+                    visible.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+                }
+
+                visible.forEach(function (item) {
+                    item.style.display = "";
+                    productGrid.appendChild(item);
+                });
+
+                productItems.forEach(function (item) {
+                    if (!visible.includes(item)) item.style.display = "none";
+                });
+
+                emptyMessage.style.display = visible.length === 0 ? "block" : "none";
+                resultCount.textContent =
+                    "Showing " + visible.length + (visible.length === 1 ? " product" : " products");
+            }
+
+            searchInput.addEventListener("input", updateProducts);
+            sortSelect.addEventListener("change", updateProducts);
+
+            categoryButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    categoryButtons.forEach(b => b.classList.remove("active"));
+                    button.classList.add("active");
+                    selectedCategory = button.dataset.category;
+                    updateProducts();
+                });
+            });
+
+            document.getElementById("resetFilters").addEventListener("click", function () {
+                searchInput.value = "";
+                sortSelect.value = "default";
+                selectedCategory = "all";
+                categoryButtons.forEach(function (button) {
+                    button.classList.toggle("active", button.dataset.category === "all");
+                });
+                updateProducts();
+            });
+
+            // =========================
+            // SHOPPING CART
+            // =========================
+            const CART_KEY = "bakerzBiteMerchCart";
+            let cart = [];
+
+            try {
+                cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+            } catch (e) {
+                cart = [];
+            }
+
+            function saveCart() {
+                try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) { }
+            }
+
+            const cartCount = document.getElementById("cartCount");
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
+            const placeOrderBtn = document.getElementById("placeOrderBtn");
+            const orderMsg = document.getElementById("orderMsg");
+
+            function formatPrice(price) {
+                return "Rs. " + Number(price).toLocaleString("en-US");
+            }
+
+            function renderCart() {
+                const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+                cartCount.textContent = totalQuantity;
+                cartTotal.textContent = formatPrice(totalPrice);
+                placeOrderBtn.disabled = cart.length === 0;
+
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p class="text-muted text-center">Your cart is empty.</p>';
+                    saveCart();
+                    return;
+                }
+
+                cartItems.innerHTML = cart.map(function (item, index) {
+                    return `
+                    <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+                        <div>
+                            <strong>${item.name}</strong>
+                            <div class="small text-muted">${formatPrice(item.price)} × ${item.quantity}</div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                data-cart-action="decrease" data-index="${index}" aria-label="Decrease quantity">−</button>
+                            <span>${item.quantity}</span>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                data-cart-action="increase" data-index="${index}" aria-label="Increase quantity">+</button>
+                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                data-cart-action="remove" data-index="${index}" aria-label="Remove item">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>`;
+                }).join("");
+
+                saveCart();
+            }
+
+            function addToCart(name, price) {
+                const p = parseFloat(String(price).replace(/[^0-9.]/g, ""));
+                if (!name || isNaN(p)) {
+                    console.error("Cart: invalid product", name, price);
+                    return;
+                }
+
+                orderMsg.classList.add("d-none");
+
+                const existing = cart.find(item => item.name === name);
+                if (existing) {
+                    existing.quantity += 1;
+                } else {
+                    cart.push({ name: name, price: p, quantity: 1 });
+                }
+                renderCart();
+            }
+
+            // Card se "Add" button
+            document.querySelectorAll(".add-to-cart").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    addToCart(button.dataset.name, button.dataset.price);
+
+                    button.innerHTML = '<i class="bi bi-check2"></i> Added';
+                    window.setTimeout(function () {
+                        button.innerHTML = '<i class="bi bi-bag-plus"></i> Add';
+                    }, 900);
+                });
+            });
+
+            // =========================
+            // PRODUCT DETAILS MODAL
+            // =========================
+            const productModal = bootstrap.Modal.getOrCreateInstance(document.getElementById("productModal"));
+            let selectedProduct = null;
+
+            document.querySelectorAll(".product-details").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    selectedProduct = {
+                        name: button.dataset.name,
+                        price: Number(button.dataset.price)
+                    };
+
+                    document.getElementById("modalProductName").textContent = button.dataset.name;
+                    document.getElementById("modalCategory").textContent = button.dataset.category;
+                    document.getElementById("modalDescription").textContent = button.dataset.description;
+                    document.getElementById("modalPrice").textContent = formatPrice(button.dataset.price);
+
+                    productModal.show();
+                });
+            });
+
+            document.getElementById("modalAddToCart").addEventListener("click", function () {
+                if (!selectedProduct) return;
+
+                addToCart(selectedProduct.name, selectedProduct.price);
+                productModal.hide();
+
+                // pehla modal poora band hone ke baad cart kholo
+                document.getElementById("productModal").addEventListener("hidden.bs.modal", function openCart() {
+                    bootstrap.Modal.getOrCreateInstance(document.getElementById("cartModal")).show();
+                }, { once: true });
+            });
+
+            // =========================
+            // CART + / - / DELETE
+            // =========================
+            cartItems.addEventListener("click", function (event) {
+                const button = event.target.closest("button[data-cart-action]");
+                if (!button) return;
+
+                const index = Number(button.dataset.index);
+                const action = button.dataset.cartAction;
+                if (!cart[index]) return;
+
+                if (action === "increase") {
+                    cart[index].quantity += 1;
+                } else if (action === "decrease") {
+                    cart[index].quantity -= 1;
+                    if (cart[index].quantity <= 0) cart.splice(index, 1);
+                } else if (action === "remove") {
+                    cart.splice(index, 1);
+                }
+                renderCart();
+            });
+
+            // Place order
+            placeOrderBtn.addEventListener("click", function () {
+                if (!cart.length) return;
+                cart = [];
+                renderCart();
+                orderMsg.classList.remove("d-none");
+            });
+
+            renderCart();
+            updateProducts();
+        });
+    </script>
+</body>
+
+</html>

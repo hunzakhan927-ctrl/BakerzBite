@@ -1,0 +1,571 @@
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    min-height: 85vh;
+    padding: 160px 0 70px;
+    background: linear-gradient(135deg, #6e4330, #2e1b14);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1,
+.page-hero h1,
+h2 {
+    font-family: "DM Serif Display", serif;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 82px);
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.hero-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    text-align: center;
+    background: #1f120eaa;
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    padding: 90px 0;
+}
+
+.dark {
+    background: #2a1912;
+    color: white;
+}
+
+.kicker,
+.eyebrow {
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.page-hero {
+    padding: 150px 0 70px;
+    background: #f0dfcf;
+}
+
+.page-hero h1 {
+    font-size: 60px;
+    color: #5a3424;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading h2,
+h2 {
+    font-size: 48px;
+}
+
+.feature-photo,
+.about-photo {
+    min-height: 390px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #c58b61, #70432f);
+}
+
+/* =========================
+   CATEGORY FILTERS
+========================= */
+
+.filters {
+    max-width: 900px;
+    margin: auto;
+}
+
+.filter {
+    border: 1px solid #c9a98e;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.filter.active {
+    background: #5a3424;
+    color: white;
+}
+
+/* =========================
+   MENU PRODUCT CARDS
+========================= */
+
+.cardbox {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #f5eee5;
+    box-shadow: 0 8px 30px #0001;
+}
+
+.menu-item {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* All product images use identical dimensions */
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    transition: transform 0.4s ease;
+}
+
+.menu-item:hover .product-image {
+    transform: scale(1.04);
+}
+
+/* =========================
+   TEXT OVER PRODUCT IMAGES
+========================= */
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 25px;
+    background: linear-gradient(
+        to top,
+        rgba(31, 18, 14, 0.95) 0%,
+        rgba(31, 18, 14, 0.5) 50%,
+        transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+}
+
+.card-overlay h3 {
+    color: white;
+    font-size: 22px;
+    margin: 8px 0;
+    text-transform: capitalize;
+}
+
+.card-overlay p {
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.card-overlay .kicker {
+    text-transform: uppercase;
+}
+
+.card-overlay b {
+    color: #f5c16c;
+    font-size: 18px;
+}
+
+/* =========================
+   OFFERS
+========================= */
+
+.offers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.offer {
+    padding: 28px;
+    border: 1px solid #ffffff2b;
+    border-radius: 18px;
+    background: #ffffff12;
+}
+
+.offer.big {
+    grid-column: span 2;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.g {
+    min-height: 260px;
+    border: 0;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #b8784f, #4a2a1e);
+    color: white;
+    font-size: 24px;
+    padding: 20px;
+}
+
+/* =========================
+   PRODUCT POPUP
+========================= */
+
+.product-modal {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.modal-product-image {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+}
+
+.product-modal .modal-body {
+    padding: 30px;
+}
+
+.product-modal h2 {
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.modal-price {
+    color: #b77b35;
+    margin-bottom: 20px;
+}
+
+.product-modal p {
+    line-height: 1.7;
+}
+
+/* =========================
+   ALTERNATIVE PRODUCT CARDS
+========================= */
+
+.product-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.1)
+    );
+    padding: 2rem 1.5rem 1.5rem;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1d110d;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+/* =========================
+   FLOATING BUTTONS
+========================= */
+
+.ticker {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #24140e;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    z-index: 1000;
+}
+
+#top {
+    position: fixed;
+    right: 18px;
+    bottom: 65px;
+    border: 0;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background: #d79a6c;
+    color: white;
+    display: none;
+    cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .offers {
+        grid-template-columns: 1fr;
+    }
+
+    .offer.big {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .cardbox {
+        height: 300px;
+    }
+
+    .card-overlay {
+        padding: 18px;
+    }
+
+    .card-overlay h3 {
+        font-size: 19px;
+    }
+
+    .card-overlay p {
+        font-size: 13px;
+    }
+
+    .modal-product-image {
+        height: 250px;
+    }
+
+    .page-hero h1 {
+        font-size: 42px;
+    }
+
+    .heading h2,
+    h2 {
+        font-size: 36px;
+    }
+
+    .hero-bar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+/* Product card click hint */
+.click-hint {
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #f0d3b0;
+    text-transform: uppercase;
+}
+
+/* Popup text styling */
+.product-modal .modal-header {
+    background: #fff9f2;
+    color: #5a3424;
+}
+
+.product-modal .modal-body {
+    background: #fff9f2;
+    color: #3a2922;
+}
+
+.product-modal .modal-body h4 {
+    color: #5a3424;
+    font-family: "DM Serif Display", serif;
+    margin-top: 20px;
+}
+
+.product-modal .modal-body p {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.menu-item:focus-visible {
+    outline: 3px solid #d79a6c;
+    outline-offset: 3px;
+}
+
+/* =====================================
+   EQUAL MERCHANDISE CARD SIZES
+===================================== */
+
+/* Make every product column stretch equally */
+#productGrid {
+    align-items: stretch;
+}
+
+#productGrid > .product-item {
+    display: flex;
+    align-items: stretch;
+}
+
+/* Give every product card the same height */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #f1e4d5;
+    border-radius: 15px;
+}
+
+/* Make every product image exactly the same size */
+.product-card > img,
+.product-image {
+    display: block;
+    width: 100%;
+    height: 240px;
+    min-height: 240px;
+    max-height: 240px;
+    object-fit: contain;
+    object-position: center;
+    padding: 10px;
+    background-color: #f8eee2;
+    flex-shrink: 0;
+}
+
+/* Align the contents of every card */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    min-width: 0;
+}
+
+/* Keep product titles consistent */
+.product-title {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    min-height: 2.8em;
+    margin: 8px 0;
+    color: #603813;
+}
+
+/* Keep descriptions aligned */
+.product-description {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    min-height: 4.8em;
+    margin-bottom: 12px;
+    color: #786b60;
+}
+
+/* Keep stock labels in a consistent position */
+.badge-stock {
+    align-self: flex-start;
+    margin-bottom: 2px;
+}
+
+/* Keep prices and Add buttons aligned at the bottom */
+.product-info > .d-flex {
+    margin-top: auto !important;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #603813;
+}
+
+/* Consistent View Details button spacing */
+.product-details {
+    margin-top: 14px !important;
+    align-self: flex-start;
+}
+
+/* Consistent hover effect */
+.product-card {
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(60, 35, 15, 0.12);
+}
+
+/* Tablet and mobile adjustments */
+@media (max-width: 576px) {
+    .product-card > img,
+    .product-image {
+        height: 210px;
+        min-height: 210px;
+        max-height: 210px;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-title {
+        font-size: 1.05rem;
+    }
+
+    .product-description {
+        min-height: 4.8em;
+    }
+}
+
+/* Bakerz Bite - navbar styling */

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Bakerz Bite</title>
+    <meta name="description"
+        content="Discover the story, mission, and passion behind Bakerz Bite, your destination for delicious bakery treats.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared Website CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        :root {
+            --bakery-brown: #603813;
+            --bakery-dark: #3e2514;
+            --bakery-cream: #fff8ee;
+            --bakery-gold: #d9a15b;
+            --bakery-pink: #f8e5d9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bakery-cream);
+            color: var(--bakery-dark);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: #fff9f2ee;
+            box-shadow: 0 2px 15px #0001;
+            padding: 12px 0
+        }
+
+        .navbar-brand {
+            color: #5a3424;
+            text-decoration: none;
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .navbar-brand span {
+            display: flex;
+            flex-direction: column;
+            line-height: 1
+        }
+
+        .navbar-brand i {
+            font-family: serif
+        }
+
+        .navbar-brand small {
+            font-size: 8px;
+            letter-spacing: 2px
+        }
+
+        .nav-link {
+            font-weight: 600
+        }
+        /* Hero */
+        .about-hero {
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            background:
+                linear-gradient(rgba(43, 22, 19, 0.62), rgba(43, 22, 19, 0.62)),
+                url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1800&q=85') center / cover no-repeat;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-weight: 800;
+        }
+
+        .about-hero p {
+            max-width: 690px;
+            margin: 18px auto 0;
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+
+        .eyebrow {
+            color: var(--rose);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: var(--brown);
+            font-weight: 800;
+        }
+
+        .section-text {
+            color: var(--muted);
+            line-height: 1.95;
+            font-size: 0.95rem;
+        }
+
+        /* Story section */
+        .story-image-wrap {
+            position: relative;
+            padding: 0 18px 18px 0;
+        }
+
+
+
+        .story-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .story-badge {
+            position: absolute;
+            z-index: 2;
+            bottom: 32px;
+            left: -5px;
+            max-width: 190px;
+            padding: 18px;
+            background: #fff;
+            color: var(--brown);
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(84, 43, 39, 0.14);
+        }
+
+        .story-badge strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+        }
+
+        .story-badge span {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        /* Values */
+        .value-card {
+            height: 100%;
+            padding: 30px 24px;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 5px 22px rgba(84, 43, 39, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(84, 43, 39, 0.12);
+        }
+
+        .value-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: var(--pink);
+            color: var(--rose);
+            font-size: 1.8rem;
+            margin-bottom: 22px;
+        }
+
+        .value-card h3 {
+            color: var(--brown);
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Mission and vision */
+        .mission-section {
+            background: var(--pink);
+        }
+
+        .mission-card {
+            height: 100%;
+            padding: 35px;
+            background: #fff;
+            border-radius: 18px;
+        }
+
+        .mission-card h3 {
+            color: var(--brown);
+            font-size: 1.7rem;
+        }
+
+        .mission-card p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .mission-icon {
+            font-size: 2rem;
+            color: var(--rose);
+            margin-bottom: 15px;
+        }
+
+        /* Baking process */
+        .process-card {
+            text-align: center;
+            padding: 25px 18px;
+        }
+
+        .process-number {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brown);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 1.15rem;
+        }
+
+        .process-card h3 {
+            color: var(--brown);
+            font-size: 1.25rem;
+        }
+
+        .process-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.88rem;
+        }
+
+        /* Quote banner */
+        .quote-banner {
+            padding: 65px 25px;
+            text-align: center;
+            color: #fff;
+            background:
+                linear-gradient(rgba(62, 32, 28, 0.83), rgba(62, 32, 28, 0.83)),
+                url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=85') center / cover no-repeat;
+        }
+
+        .quote-banner h2 {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            line-height: 1.45;
+        }
+
+        .quote-banner p {
+            color: #f1d8d1;
+            margin-top: 18px;
+        }
+
+        /* CTA */
+        .cta-box {
+            padding: 55px 25px;
+            background: var(--pink);
+            border-radius: 22px;
+        }
+
+        footer {
+            background: #3e2421;
+            color: #f9eeeb;
+        }
+
+        footer a {
+            color: #f9eeeb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #f0b9af;
+        }
+
+        .footer-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .footer-link {
+            display: block;
+            margin-bottom: 10px;
+            color: #e5cfca;
+            font-size: 0.9rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border: 1px solid #80625c;
+            border-radius: 50%;
+            margin-right: 7px;
+            transition: 0.25s ease;
+        }
+
+        .social-link:hover {
+            background: var(--rose);
+            border-color: var(--rose);
+            color: #fff;
+        }
+
+        @media (max-width: 767px) {
+            .about-hero {
+                min-height: 350px;
+            }
+
+            .story-image {
+                height: 340px;
+            }
+
+            .story-badge {
+                left: 8px;
+                bottom: 25px;
+            }
+
+            .mission-card {
+                padding: 28px 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+  
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg fixed-top" id="nav">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <b class="logo">☕</b>
+            <span>
+                <strong>Bakerz</strong>
+                <i>Bite</i>
+                <small>BAKERY &amp; CAFÉ</small>
+            </span>
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+                aria-controls="menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="merchandise.html">Merchandise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="offers.html">Offers</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="faq.html">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sitemap.html">Site Map</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+    <header class="about-hero">
+        <div class="container py-5">
+
+            <span class="text-uppercase small fw-semibold" style="letter-spacing: 4px;">
+                Welcome to Our Bakery
+            </span>
+
+            <h1 class="mt-3">The Story Behind the Sweetness</h1>
+
+            <p>
+                At Bakerz Bite, we believe that every delicious bite can
+                create a beautiful memory. Discover our love for baking,
+                our passion for quality, and the little details that make
+                every treat special.
+            </p>
+
+            <a href="#our-story" class="btn btn-light rounded-pill px-4 py-3 mt-4">
+                Discover Our Story
+                <i class="bi bi-arrow-down ms-2"></i>
+            </a>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- ================= OUR STORY ================= -->
+        <section id="our-story" class="py-5">
+            <div class="container py-lg-5">
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-6">
+                        <div class="story-image-wrap">
+
+                            <img src="./images/images/Bakerz Bite_ Cozy Café at Dusk.png " style="width: 100%; "
+                                alt="Baker preparing fresh bakery products" class="story-image" loading="lazy">
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <span class="eyebrow">Who We Are</span>
+
+                        <h2 class="section-title display-5 mt-3 mb-4">
+                            Our Story Begins with a Love for Baking
+                        </h2>
+
+                        <p class="section-text">
+                            Bakerz Bite is a bakery website created around
+                            one simple idea: good food brings people together.
+                            We love the comfort of a freshly baked treat,
+                            the excitement of a celebration cake, and the
+                            happiness that comes from sharing something sweet.
+                        </p>
+
+                        <p class="section-text">
+                            Our collection features bakery favourites such
+                            as cakes, cupcakes, pastries, cookies and other
+                            delightful treats. Whether you are planning a
+                            birthday, celebrating a milestone, or enjoying
+                            an ordinary afternoon, we want to help make
+                            the moment feel special.
+                        </p>
+
+                        <p class="section-text">
+                            We aim to make exploring our bakery simple,
+                            enjoyable and welcoming, so you can discover
+                            something you love with every visit.
+                        </p>
+
+                        <a href="menu.html" class="btn btn-bakery mt-2">
+                            Explore Our Menu
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= OUR VALUES ================= -->
+        <section class="py-5" style="background: #fff;">
+            <div class="container py-lg-4">
+
+                <div class="text-center mb-5">
+                    <span class="eyebrow">What Matters to Us</span>
+
+                    <h2 class="section-title display-5 mt-3">
+                        The Values Behind Every Bite
+                    </h2>
+
+                    <p class="section-text mt-3 mx-auto" style="max-width: 650px;">
+                        Our approach is guided by the things that make
+                        a bakery experience warm, memorable and enjoyable.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- Value 1 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-heart-fill"></i>
+                            </div>
+
+                            <h3>Made with Care</h3>
+
+                            <p>
+                                Every creation should feel thoughtful,
+                                inviting and perfect for sharing with
+                                the people you love.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-stars"></i>
+                            </div>
+
+                            <h3>Quality First</h3>
+
+                            <p>
+                                We value delicious flavours, appealing
+                                presentation and attention to the little
+                                details that matter.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-emoji-smile"></i>
+                            </div>
+
+                            <h3>Customer Happiness</h3>
+
+                            <p>
+                                We want every visitor to enjoy a friendly
+                                experience when browsing our bakery
+                                products and pages.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Value 4 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi bi-gift"></i>
+                            </div>
+
+                            <h3>Celebrate Together</h3>
+
+                            <p>
+                                From small treats to big celebrations,
+                                sweet moments are even better when
+                                they are shared.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= MISSION AND VISION ================= -->
+        <section class="mission-section py-5">
+            <div class="container py-lg-4">
+
+                <div class="text-center mb-5">
+                    <span class="eyebrow">Our Purpose</span>
+
+                    <h2 class="section-title display-5 mt-3">
+                        Our Mission & Vision
+                    </h2>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-lg-6">
+                        <div class="mission-card">
+
+                            <div class="mission-icon">
+                                <i class="bi bi-bullseye"></i>
+                            </div>
+
+                            <h3 class="mb-3">Our Mission</h3>
+
+                            <p>
+                                Our mission is to bring the joy of bakery
+                                treats to everyday life and special occasions.
+                                We want to offer an enjoyable browsing
+                                experience, showcase a tempting selection
+                                of sweet favourites, and make discovering
+                                the right treat easy and delightful.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="mission-card">
+
+                            <div class="mission-icon">
+                                <i class="bi bi-eye"></i>
+                            </div>
+
+                            <h3 class="mb-3">Our Vision</h3>
+
+                            <p>
+                                Our vision is to build a welcoming bakery
+                                brand that people associate with happiness,
+                                creativity and memorable moments. We hope
+                                to inspire celebrations, encourage sharing,
+                                and make every visit to Bakerz Bite feel
+                                like a little treat.
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= OUR PROCESS ================= -->
+        <section class="py-5">
+            <div class="container py-lg-4">
+
+                <div class="text-center mb-5">
+                    <span class="eyebrow">From Idea to Treat</span>
+
+                    <h2 class="section-title display-5 mt-3">
+                        The Joy of Every Creation
+                    </h2>
+
+                    <p class="section-text mx-auto mt-3" style="max-width: 650px;">
+                        Great bakery experiences begin with a thoughtful
+                        idea and finish with something worth sharing.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="process-card">
+
+                            <div class="process-number">01</div>
+
+                            <h3>Choose with Care</h3>
+
+                            <p>
+                                Explore different bakery favourites and
+                                find a treat that suits your taste
+                                or celebration.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="process-card">
+
+                            <div class="process-number">02</div>
+
+                            <h3>Prepare Thoughtfully</h3>
+
+                            <p>
+                                A good baking experience begins with
+                                careful preparation and attention
+                                to the recipe.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="process-card">
+
+                            <div class="process-number">03</div>
+
+                            <h3>Add the Details</h3>
+
+                            <p>
+                                Attractive finishing touches help make
+                                cakes, cupcakes and pastries look
+                                as delightful as they taste.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="process-card">
+
+                            <div class="process-number">04</div>
+
+                            <h3>Share the Happiness</h3>
+
+                            <p>
+                                Enjoy a favourite treat with family,
+                                friends or anyone who makes your
+                                day a little sweeter.
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= QUOTE BANNER ================= -->
+        <section class="quote-banner">
+            <div class="container">
+
+                <i class="bi bi-quote fs-1" style="color: #f0b9af;"></i>
+
+                <h2>
+                    Life is sweeter when there is something delicious
+                    to share.
+                </h2>
+
+                <p>
+                    Bakerz Bite — a little happiness in every bite.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- ================= CALL TO ACTION ================= -->
+        <section class="container py-5 my-lg-4">
+            <div class="cta-box text-center">
+
+                <span class="eyebrow">Let's Make Something Sweet</span>
+
+                <h2 class="section-title display-5 mt-3">
+                    Your Next Favourite Treat Awaits
+                </h2>
+
+                <p class="section-text mx-auto mt-3 mb-4" style="max-width: 650px;">
+                    Browse our menu, discover our latest offers,
+                    or get in touch with us to learn more about
+                    Bakerz Bite.
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+
+                    <a href="menu.html" class="btn btn-bakery">
+                        View Our Menu
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+
+                    <a href="gallery.html" class="btn btn-outline-bakery">
+                        Visit Gallery
+                        <i class="bi bi-images ms-2"></i>
+                    </a>
+
+                    <a href="contact.html" class="btn btn-outline-bakery">
+                        Contact Us
+                        <i class="bi bi-envelope ms-2"></i>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="pt-5 pb-3">
+        <div class="container">
+
+            <div class="row g-4 pb-4">
+
+                <!-- Brand -->
+                <div class="col-md-6 col-lg-4">
+
+                    <a class="navbar-brand" href="index.html"><b class="logo">☕</b><span><strong>Bakerz</strong>
+                            <i>Bite</i><small>BAKERY & CAFÉ</small></span></a>
+
+                    <p class="mt-3" style="color: #e5cfca; line-height: 1.8; font-size: 0.9rem;">
+                        Freshly baked happiness, made with love.
+                        From everyday treats to special celebration cakes,
+                        we make every bite memorable.
+                    </p>
+
+                    <div class="mt-3">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="#" class="social-link" aria-label="Pinterest">
+                            <i class="bi bi-pinterest"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-6 col-md-6 col-lg-2">
+
+                    <h5 class="footer-heading">Quick Links</h5>
+
+                    <a class="footer-link" href="index.html">Home</a>
+                    <a class="footer-link" href="menu.html">Our Menu</a>
+                    <a class="footer-link" href="offers.html">Special Offers</a>
+                    <a class="footer-link" href="gallery.html">Gallery</a>
+
+                </div>
+
+                <!-- Customer Care -->
+                <div class="col-6 col-md-6 col-lg-3">
+
+                    <h5 class="footer-heading">Customer Care</h5>
+
+                    <a class="footer-link" href="about.html">About Us</a>
+                    <a class="footer-link" href="feedback.html">Customer Feedback</a>
+                    <a class="footer-link" href="faq.html">FAQs</a>
+                    <a class="footer-link" href="contact.html">Contact Us</a>
+                    <a class="footer-link" href="sitemap.html">Sitemap</a>
+
+                </div>
+
+                <!-- Contact -->
+                <div class="col-md-6 col-lg-3">
+
+                    <h5 class="footer-heading">Get in Touch</h5>
+
+                    <p class="mb-3" style="color: #e5cfca; font-size: 0.9rem;">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Karachi, Pakistan
+                    </p>
+
+                    <p class="mb-3" style="color: #e5cfca; font-size: 0.9rem;">
+                        <i class="bi bi-envelope me-2"></i>
+                        hello@bakerzbite.example
+                    </p>
+
+                    <p style="color: #e5cfca; font-size: 0.85rem;">
+                        Replace these sample contact details with your real business information.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr style="border-color: #80625c;">
+
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 pt-2">
+
+                <p class="mb-0 small" style="color: #d7bdb7;">
+                    &copy; <span id="currentYear"></span>
+                    Bakerz Bite. All rights reserved.
+                </p>
+
+                <p class="mb-0 small" style="color: #d7bdb7;">
+                    Baked with
+                    <i class="bi bi-heart-fill" style="color: #f0b9af;"></i>
+                    and happiness.
+                </p>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Shared Website JavaScript -->
+    <script src="assets/app.js"></script>
+
+    <!-- About Page JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const yearElement = document.getElementById("currentYear");
+
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+
+    <!-- Bootstrap 5 JavaScript bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bakerz Bite custom JavaScript -->
+    <script src="./app.js"></script>
+</body>
+
+</html>
+
+</body>
+
+</html>

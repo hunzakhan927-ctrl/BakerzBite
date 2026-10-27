@@ -1,0 +1,1291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Special Offers | Bakerz Bite</title>
+    <meta name="description" content="Explore special bakery deals, dessert bundles, cake offers and sweet treats at Bakerz Bite.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        :root {
+            --brown: #603813;
+            --dark-brown: #3e2514;
+            --cream: #fff8ee;
+            --gold: #d9a15b;
+            --pink: #f8e5d9;
+            --text: #4b382a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+.navbar {
+    background: #fff9f2ee;
+    box-shadow: 0 2px 15px #0001;
+    padding: 12px 0
+}
+
+.navbar-brand {
+    color: #5a3424;
+    text-decoration: none;
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.navbar-brand span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1
+}
+
+.navbar-brand i {
+    font-family: serif
+}
+
+.navbar-brand small {
+    font-size: 8px;
+    letter-spacing: 2px
+}
+
+.nav-link {
+    font-weight: 600
+}
+
+        /* Hero */
+
+        .hero {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(
+                    rgba(42, 23, 12, 0.72),
+                    rgba(42, 23, 12, 0.76)
+                ),
+                url("https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1800&q=85");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 6vw, 4.5rem);
+            font-weight: 700;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 18px auto 28px;
+            line-height: 1.9;
+            color: #fff1e1;
+        }
+
+        /* Intro benefit cards */
+
+        .benefit-card {
+            background: white;
+            border: 1px solid #f0e2d3;
+            border-radius: 14px;
+            padding: 24px 15px;
+            height: 100%;
+            text-align: center;
+        }
+
+        .benefit-card i {
+            font-size: 2rem;
+            color: #b47a3a;
+        }
+
+        .benefit-card h5 {
+            color: var(--brown);
+            margin-top: 12px;
+        }
+
+        .benefit-card p {
+            color: #806b59;
+            font-size: 0.88rem;
+            margin-bottom: 0;
+        }
+
+        /* Featured offer */
+
+        .featured-offer {
+            overflow: hidden;
+            background: var(--pink);
+            border-radius: 20px;
+        }
+
+        .featured-offer img {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            object-fit: cover;
+        }
+
+        .featured-copy {
+            padding: 38px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #8d4829;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .featured-copy h2 {
+            color: var(--brown);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 20px 0 14px;
+        }
+
+        .coupon-code {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px dashed #a16a32;
+            border-radius: 9px;
+            padding: 11px 15px;
+            color: var(--brown);
+            background: rgba(255, 255, 255, 0.65);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Offer cards */
+
+        .offer-card {
+            background: white;
+            border: 1px solid #f0e2d3;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(60, 35, 15, 0.12);
+        }
+
+        .offer-image-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-image {
+            width: 100%;
+            height: 225px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .offer-card:hover .offer-image {
+            transform: scale(1.05);
+        }
+
+        .offer-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #fff;
+            color: var(--brown);
+            border-radius: 25px;
+            padding: 7px 13px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .offer-body {
+            padding: 22px;
+        }
+
+        .offer-body h3 {
+            color: var(--brown);
+            font-size: 1.45rem;
+        }
+
+        .offer-body p {
+            color: #806b59;
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+
+        .offer-price {
+            color: var(--brown);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .old-price {
+            color: #94877b;
+            text-decoration: line-through;
+            font-size: 0.9rem;
+            margin-left: 6px;
+        }
+
+        .saving-text {
+            color: #347144;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Offer terms */
+
+        .terms-box {
+            background: #fff;
+            border: 1px solid #f0e2d3;
+            border-radius: 15px;
+            padding: 28px;
+        }
+
+        .terms-box li {
+            color: #786b60;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* Newsletter */
+
+        .newsletter {
+            background: #f5e4d2;
+            border-radius: 18px;
+            padding: 40px;
+        }
+
+        .newsletter .form-control {
+            border-radius: 30px;
+            padding: 13px 18px;
+            border-color: #e4d0ba;
+        }
+
+        /* Footer */
+
+        footer {
+            background: var(--dark-brown);
+            color: #f8eee2;
+        }
+
+        .footer-heading {
+            color: #f0c68f;
+        }
+
+        footer a {
+            color: #f8eee2;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        .social-link {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 7px;
+        }
+
+        .social-link:hover {
+            background: #8a572b;
+            color: white;
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 360px;
+            }
+
+            .featured-copy {
+                padding: 25px;
+            }
+
+            .featured-offer img {
+                min-height: 250px;
+                max-height: 300px;
+            }
+
+            .newsletter {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+
+<!-- NAVBAR: Bakerz Bite - same as index.html -->
+<nav class="navbar navbar-expand-lg fixed-top" id="nav">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <b class="logo">☕</b>
+            <span>
+                <strong>Bakerz</strong>
+                <i>Bite</i>
+                <small>BAKERY &amp; CAFÉ</small>
+            </span>
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+                aria-controls="menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="merchandise.html">Merchandise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="offers.html">Offers</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="faq.html">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sitemap.html">Site Map</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+    <div class="container">
+
+        <p class="section-label mb-3"
+           style="color: #f2c88f;">
+            A Little More Sweetness
+        </p>
+
+        <h1>Special Offers & Sweet Deals</h1>
+
+        <p>
+            Enjoy our sample bakery promotions, dessert bundles and
+            celebration packages. Discover a sweet deal for your next
+            tea party, family gathering or special occasion.
+        </p>
+
+        <a href="#allOffers" class="btn btn-bakery">
+            Explore Offers
+            <i class="bi bi-arrow-down ms-2"></i>
+        </a>
+
+    </div>
+</header>
+
+
+<!-- ================= BENEFITS ================= -->
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row g-3">
+
+            <div class="col-6 col-lg-3">
+                <div class="benefit-card">
+                    <i class="bi bi-cake2"></i>
+                    <h5>Cake Deals</h5>
+                    <p>Sample packages for celebrations.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="benefit-card">
+                    <i class="bi bi-box2-heart"></i>
+                    <h5>Sweet Bundles</h5>
+                    <p>Combine your favorite bakery treats.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="benefit-card">
+                    <i class="bi bi-gift"></i>
+                    <h5>Gift Packages</h5>
+                    <p>Thoughtful treats for special moments.</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="benefit-card">
+                    <i class="bi bi-cup-hot"></i>
+                    <h5>Tea-Time Treats</h5>
+                    <p>Lovely choices for afternoon tea.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= FEATURED OFFER ================= -->
+
+<section class="pb-5">
+    <div class="container">
+
+        <div class="featured-offer">
+            <div class="row g-0 align-items-stretch">
+
+                <div class="col-lg-6">
+                    <img
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85"
+                        alt="Chocolate celebration cake"
+                        loading="lazy">
+                </div>
+
+                <div class="col-lg-6 d-flex align-items-center">
+                    <div class="featured-copy">
+
+                        <span class="discount-badge">
+                            <i class="bi bi-stars me-1"></i>
+                            Featured Sample Deal
+                        </span>
+
+                        <h2>Celebrate with Something Sweet</h2>
+
+                        <p class="text-secondary" style="line-height: 1.9;">
+                            Make birthdays and celebrations extra special
+                            with a cake package. This example promotion
+                            demonstrates how a featured discount can be
+                            displayed on your bakery website.
+                        </p>
+
+                        <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+                            <div>
+                                <span class="coupon-code" id="featuredCoupon">
+                                    CAKE10
+                                </span>
+                            </div>
+
+                            <button class="btn btn-outline-bakery"
+                                    type="button"
+                                    data-copy-coupon="CAKE10">
+                                <i class="bi bi-clipboard me-1"></i>
+                                Copy Code
+                            </button>
+                        </div>
+
+                        <p class="small text-muted mt-3 mb-4"
+                           id="featuredCouponMessage"
+                           aria-live="polite">
+                            Sample coupon code for demonstration.
+                        </p>
+
+                        <a href="menu.html" class="btn btn-bakery">
+                            Explore Cakes
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= ALL OFFERS ================= -->
+
+<section class="section-padding" id="allOffers"
+         style="background: #fcf1e4;">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="section-label">Something for Everyone</p>
+
+            <h2 class="section-heading display-6">
+                Explore Our Sweet Deals
+            </h2>
+
+            <p class="section-description mx-auto mt-3">
+                Browse these sample offers for your coursework project.
+                Choose a package and visit the menu or contact page for
+                more information.
+            </p>
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Offer 1 -->
+            <div class="col-sm-6 col-lg-4">
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+                        <img
+                            class="offer-image"
+                            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"
+                            alt="Chocolate cake deal"
+                            loading="lazy">
+
+                        <span class="offer-tag">Cake Special</span>
+                    </div>
+
+                    <div class="offer-body">
+
+                        <h3>Celebration Cake Deal</h3>
+
+                        <p>
+                            A sample celebration package for birthdays,
+                            family gatherings and memorable occasions.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="offer-price">Rs. 2,250</span>
+                            <span class="old-price">Rs. 2,500</span>
+                        </div>
+
+                        <p class="saving-text">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            Sample saving: Rs. 250
+                        </p>
+
+                        <a href="menu.html"
+                           class="btn btn-bakery w-100 mt-2">
+                            View Cake Menu
+                        </a>
+
+                    </div>
+                </article>
+            </div>
+
+
+            <!-- Offer 2 -->
+            <div class="col-sm-6 col-lg-4">
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+                        <img
+                            class="offer-image"
+                            src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85"
+                            alt="Fresh pastries for a bakery bundle"
+                            loading="lazy">
+
+                        <span class="offer-tag">Bakery Bundle</span>
+                    </div>
+
+                    <div class="offer-body">
+
+                        <h3>Pastry Lovers Bundle</h3>
+
+                        <p>
+                            A sample assorted pastry bundle for sharing
+                            during breakfast, tea time or a small gathering.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="offer-price">Rs. 900</span>
+                            <span class="old-price">Rs. 1,050</span>
+                        </div>
+
+                        <p class="saving-text">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            Sample saving: Rs. 150
+                        </p>
+
+                        <a href="menu.html"
+                           class="btn btn-bakery w-100 mt-2">
+                            Explore Pastries
+                        </a>
+
+                    </div>
+                </article>
+            </div>
+
+
+            <!-- Offer 3 -->
+            <div class="col-sm-6 col-lg-4">
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+                        <img
+                            class="offer-image"
+                            src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=85"
+                            alt="Cookies for a sweet snack"
+                            loading="lazy">
+
+                        <span class="offer-tag">Cookie Deal</span>
+                    </div>
+
+                    <div class="offer-body">
+
+                        <h3>Cookie Sharing Box</h3>
+
+                        <p>
+                            A sample cookie box deal for sharing with friends,
+                            family and anyone who loves a sweet snack.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="offer-price">Rs. 350</span>
+                            <span class="old-price">Rs. 400</span>
+                        </div>
+
+                        <p class="saving-text">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            Sample saving: Rs. 50
+                        </p>
+
+                        <a href="menu.html"
+                           class="btn btn-bakery w-100 mt-2">
+                            Explore Cookies
+                        </a>
+
+                    </div>
+                </article>
+            </div>
+
+
+            <!-- Offer 4 -->
+            <div class="col-sm-6 col-lg-4">
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+                        <img
+                            class="offer-image"
+                            src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=800&q=85"
+                            alt="Colorful cupcakes"
+                            loading="lazy">
+
+                        <span class="offer-tag">Party Favorite</span>
+                    </div>
+
+                    <div class="offer-body">
+
+                        <h3>Cupcake Party Box</h3>
+
+                        <p>
+                            A sample party box idea for birthdays, celebrations
+                            and dessert tables.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="offer-price">Rs. 1,000</span>
+                            <span class="old-price">Rs. 1,200</span>
+                        </div>
+
+                        <p class="saving-text">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            Sample saving: Rs. 200
+                        </p>
+
+                        <a href="menu.html"
+                           class="btn btn-bakery w-100 mt-2">
+                            Browse Sweet Treats
+                        </a>
+
+                    </div>
+                </article>
+            </div>
+
+
+            <!-- Offer 5 -->
+            <div class="col-sm-6 col-lg-4">
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+                        <img
+                            class="offer-image"
+                            src="https://images.unsplash.com/photo-1562007908-17c67e878c88?auto=format&fit=crop&w=800&q=85"
+                            alt="Fruit tart dessert"
+                            loading="lazy">
+
+                        <span class="offer-tag">Dessert Deal</span>
+                    </div>
+
+                    <div class="offer-body">
+
+                        <h3>Pie & Tart Treat</h3>
+
+                        <p>
+                            A sample dessert deal for those who enjoy fruit
+                            tarts, pies and delicious after-meal treats.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="offer-price">Rs. 550</span>
+                            <span class="old-price">Rs. 600</span>
+                        </div>
+
+                        <p class="saving-text">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            Sample saving: Rs. 50
+                        </p>
+
+                        <a href="menu.html"
+                           class="btn btn-bakery w-100 mt-2">
+                            Explore Desserts
+                        </a>
+
+                    </div>
+                </article>
+            </div>
+
+
+            <!-- Offer 6 -->
+            <div class="col-sm-6 col-lg-4">
+                <article class="offer-card">
+
+                    <div class="offer-image-wrap">
+                        <img
+                            class="offer-image"
+                            src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=85"
+                            alt="Coffee mug for a gift bundle"
+                            loading="lazy">
+
+                        <span class="offer-tag">Gift Idea</span>
+                    </div>
+
+                    <div class="offer-body">
+
+                        <h3>Bakery Lover Gift</h3>
+
+                        <p>
+                            A sample gift idea combining bakery-inspired
+                            merchandise with a little sweetness.
+                        </p>
+
+                        <div class="mb-3">
+                            <span class="offer-price">Rs. 1,100</span>
+                            <span class="old-price">Rs. 1,300</span>
+                        </div>
+
+                        <p class="saving-text">
+                            <i class="bi bi-check-circle-fill me-1"></i>
+                            Sample saving: Rs. 200
+                        </p>
+
+                        <a href="merchandise.html"
+                           class="btn btn-bakery w-100 mt-2">
+                            Shop Merchandise
+                        </a>
+
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <p class="text-muted small text-center mt-4 mb-0">
+            All prices, discounts and packages on this page are illustrative
+            examples for an educational website project.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- ================= HOW TO USE A COUPON ================= -->
+
+<section class="section-padding">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="section-label">Simple & Sweet</p>
+
+            <h2 class="section-heading display-6">
+                How to Use a Coupon
+            </h2>
+
+            <p class="section-description mx-auto mt-3">
+                This section demonstrates a simple coupon process for a
+                bakery website.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="benefit-card">
+                    <i class="bi bi-search"></i>
+                    <h5>1. Choose an Offer</h5>
+                    <p>
+                        Browse the sample deals and find your favorite treat.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="benefit-card">
+                    <i class="bi bi-clipboard-check"></i>
+                    <h5>2. Note the Coupon</h5>
+                    <p>
+                        Copy the example coupon code shown in the featured
+                        promotion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="benefit-card">
+                    <i class="bi bi-chat-heart"></i>
+                    <h5>3. Contact the Bakery</h5>
+                    <p>
+                        Use the contact page to ask about an offer or sample
+                        order.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="contact.html" class="btn btn-bakery">
+                Contact Bakerz Bite
+                <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= OFFER TERMS ================= -->
+
+<section class="pb-5">
+    <div class="container">
+
+        <div class="terms-box">
+
+            <h2 class="section-heading h3 mb-4">
+                <i class="bi bi-info-circle me-2"></i>
+                Offer Information
+            </h2>
+
+            <ul class="mb-0">
+                <li>
+                    The offers and coupon codes displayed on this page are
+                    sample content created for a website assignment.
+                </li>
+
+                <li>
+                    Listed prices and savings are illustrative and do not
+                    represent verified or currently available promotions.
+                </li>
+
+                <li>
+                    Offer images are examples. Actual products, ingredients,
+                    package sizes and availability would need confirmation
+                    from the bakery.
+                </li>
+
+                <li>
+                    The coupon copy button is a demonstration feature. This
+                    website does not connect to an online ordering or
+                    payment system.
+                </li>
+
+                <li>
+                    For a real bakery website, add the promotion's valid
+                    dates, terms and conditions before publishing an offer.
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="pb-5">
+    <div class="container">
+
+        <div class="newsletter text-center">
+
+            <i class="bi bi-envelope-heart"
+               style="font-size: 2.5rem; color: #a16a32;"></i>
+
+            <h2 class="section-heading mt-3">
+                Keep Up with Our Sweet Offers
+            </h2>
+
+            <p class="section-description mx-auto mt-3">
+                This sample newsletter section shows how customers could
+                subscribe to updates about bakery treats and promotions.
+            </p>
+
+            <form id="newsletterForm"
+                  class="row g-3 justify-content-center mt-2">
+
+                <div class="col-md-6 col-lg-5">
+                    <label for="newsletterEmail" class="visually-hidden">
+                        Email address
+                    </label>
+
+                    <input type="email"
+                           class="form-control"
+                           id="newsletterEmail"
+                           placeholder="Enter your email address"
+                           required>
+                </div>
+
+                <div class="col-md-auto">
+                    <button type="submit" class="btn btn-bakery w-100">
+                        Subscribe
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
+
+            </form>
+
+            <p id="newsletterMessage"
+               class="small mt-3 mb-0"
+               aria-live="polite"></p>
+
+            <p class="small text-muted mt-2 mb-0">
+                Demonstration only: this form does not send or store email
+                addresses.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="pt-5 pb-3">
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+
+                <h3 class="brand-name text-white">
+                    <i class="bi bi-cake2-fill brand-icon"></i>
+                    Bakerz Bite
+                </h3>
+
+                <p class="mt-3">
+                    Sweet moments, freshly baked. Explore delicious treats,
+                    discover special deals and make everyday moments sweeter.
+                </p>
+
+                <a href="#" class="social-link" aria-label="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#" class="social-link" aria-label="Pinterest">
+                    <i class="bi bi-pinterest"></i>
+                </a>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5 class="footer-heading">Explore</h5>
+
+                <ul class="list-unstyled mt-3">
+                    <li class="mb-2">
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="menu.html">Menu</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="merchandise.html">Merchandise</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="gallery.html">Gallery</a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5 class="footer-heading">Information</h5>
+
+                <ul class="list-unstyled mt-3">
+                    <li class="mb-2">
+                        <a href="about.html">About Us</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="feedback.html">Feedback</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="faq.html">FAQs</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="sitemap.html">Site Map</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <h5 class="footer-heading">Contact Us</h5>
+
+                <p class="mt-3 mb-2">
+                    <i class="bi bi-geo-alt me-2"></i>
+                    Karachi, Pakistan
+                </p>
+
+                <p class="mb-2">
+                    <i class="bi bi-envelope me-2"></i>
+                    <a href="mailto:hello@bakerzbite.example">
+                        hello@bakerzbite.example
+                    </a>
+                </p>
+
+                <p class="mb-2">
+                    <i class="bi bi-clock me-2"></i>
+                    Sample hours: 9 AM – 9 PM
+                </p>
+
+                <a href="contact.html"
+                   class="btn btn-outline-light btn-sm mt-2">
+                    Get in Touch
+                </a>
+
+            </div>
+
+        </div>
+
+        <hr class="border-light opacity-25 mt-4">
+
+        <div class="text-center small">
+            <p class="mb-1">
+                &copy; <span id="currentYear"></span> Bakerz Bite.
+                All rights reserved.
+            </p>
+
+            <p class="mb-0">
+                Created for an educational website project.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- Bootstrap 5 JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Shared JavaScript -->
+<script src="assets/app.js"></script>
+
+<!-- ================= PAGE JAVASCRIPT ================= -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Current year
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        // Coupon copy button
+        const couponButtons =
+            document.querySelectorAll("[data-copy-coupon]");
+
+        couponButtons.forEach(function (button) {
+            button.addEventListener("click", async function () {
+
+                const code = button.dataset.copyCoupon;
+
+                try {
+                    await navigator.clipboard.writeText(code);
+
+                    button.innerHTML =
+                        '<i class="bi bi-check2 me-1"></i> Copied!';
+
+                    const message = document.getElementById(
+                        "featuredCouponMessage"
+                    );
+
+                    message.textContent =
+                        "Coupon code " + code + " copied successfully.";
+
+                } catch (error) {
+
+                    // Fallback for browsers that block clipboard access
+                    const temporaryInput =
+                        document.createElement("textarea");
+
+                    temporaryInput.value = code;
+                    temporaryInput.setAttribute("readonly", "");
+                    temporaryInput.style.position = "absolute";
+                    temporaryInput.style.left = "-9999px";
+
+                    document.body.appendChild(temporaryInput);
+                    temporaryInput.select();
+
+                    let copied = false;
+
+                    try {
+                        copied = document.execCommand("copy");
+                    } catch (fallbackError) {
+                        copied = false;
+                    }
+
+                    temporaryInput.remove();
+
+                    const message = document.getElementById(
+                        "featuredCouponMessage"
+                    );
+
+                    if (copied) {
+                        button.innerHTML =
+                            '<i class="bi bi-check2 me-1"></i> Copied!';
+
+                        message.textContent =
+                            "Coupon code " + code + " copied successfully.";
+                    } else {
+                        message.textContent =
+                            "Please copy the code manually: " + code;
+                    }
+                }
+
+                window.setTimeout(function () {
+                    button.innerHTML =
+                        '<i class="bi bi-clipboard me-1"></i> Copy Code';
+                }, 1800);
+
+            });
+        });
+
+
+        // Newsletter demonstration
+        const newsletterForm =
+            document.getElementById("newsletterForm");
+
+        const newsletterMessage =
+            document.getElementById("newsletterMessage");
+
+        newsletterForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email =
+                document.getElementById("newsletterEmail").value.trim();
+
+            if (!email) {
+                newsletterMessage.textContent =
+                    "Please enter your email address.";
+
+                newsletterMessage.style.color = "#a12626";
+                return;
+            }
+
+            newsletterMessage.textContent =
+                "Thank you! This demonstration form does not send or store your email.";
+
+            newsletterMessage.style.color = "#276738";
+
+            newsletterForm.reset();
+        });
+
+    });
+</script>
+
+<!-- Bootstrap 5 JavaScript bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bakerz Bite custom JavaScript -->
+<script src="./app.js"></script>
+</body>
+</html>
+
+</body>
+</html>
+```
